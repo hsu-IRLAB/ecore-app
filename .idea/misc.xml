@@ -5,13 +5,16 @@
       <map>
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/drawable/bottom_nav_colors.xml" value="0.4765" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/drawable/ic_challenge.xml" value="0.4985" />
+        <entry key="..\:/myWorld/Android/ecore/app/src/main/res/drawable/ic_ranking.xml" value="0.4765" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/drawable/ic_user.xml" value="0.4765" />
+        <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/activity_badge.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/fragment_challenge.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/fragment_home.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/fragment_ranking.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/fragment_user.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/menu/bottom_mav_menu.xml" value="0.5036458333333333" />
+        <entry key="..\:/myWorld/Android/ecore/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4765" />
       </map>
     </option>
   </component>
@@ -20,5 +23,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.5" />
+      </ProjectState>
+    </option>
   </component>
 </project>

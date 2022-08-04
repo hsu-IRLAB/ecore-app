@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="Ranking이다"
+        android:textColor="#A6A6A6"
         android:textSize="40sp"
         android:textStyle="bold" />
 

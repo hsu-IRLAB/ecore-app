@@ -24,13 +24,13 @@
         android:id="@+id/activity_main_navi"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_mav_menu"
+        android:background="@color/green_100"
         app:itemIconTint="@drawable/bottom_nav_colors"
         app:itemTextColor="@drawable/bottom_nav_colors"
-        android:background="@color/green_100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_mav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
