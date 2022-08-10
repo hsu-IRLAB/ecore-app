@@ -13,8 +13,10 @@
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/fragment_home.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/fragment_ranking.xml" value="0.5046875" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/fragment_user.xml" value="0.5046875" />
+        <entry key="..\:/myWorld/Android/ecore/app/src/main/res/layout/item_recycler_ranking.xml" value="0.5036458333333333" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/menu/bottom_mav_menu.xml" value="0.5036458333333333" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4765" />
+        <entry key="..\:/myWorld/Android/ecore/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.4765" />
       </map>
     </option>
   </component>
