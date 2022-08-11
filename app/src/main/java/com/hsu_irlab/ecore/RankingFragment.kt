@@ -14,7 +14,7 @@ class RankingFragment : Fragment() {
     private val binding by lazy { FragmentRankingBinding.inflate(layoutInflater) }
 
     private val viewModel by lazy { ViewModelProvider(this,
-        RankingViewModel.Factory(requireActivity().application))[RankingViewModel::class.java] }
+        RankingViewModel.Factory())[RankingViewModel::class.java] }
 
     private lateinit var retrofitAdapter: RankingAdapter
 
