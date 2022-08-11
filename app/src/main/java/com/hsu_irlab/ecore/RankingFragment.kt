@@ -1,12 +1,10 @@
 package com.hsu_irlab.ecore
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.findViewTreeLifecycleOwner
 import com.hsu_irlab.ecore.databinding.FragmentRankingBinding
 import com.hsu_irlab.ecore.presentaion.adapter.RankingAdapter
 import com.hsu_irlab.ecore.presentaion.viewmodel.RankingViewModel
@@ -33,10 +31,6 @@ class RankingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        binding.viewModel = viewModel
-//        binding.lifecycleOwner = this
-//        setView() // 리사이클러 뷰 연결
-//        setObserver() //
         return binding.root
     }
     private fun setView(){

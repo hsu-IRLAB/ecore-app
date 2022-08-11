@@ -1,26 +1,17 @@
 package com.hsu_irlab.data
 
 import android.app.Application
-import android.util.Log
 import com.hsu_irlab.data.network.NetworkModule
-import com.hsu_irlab.data.response.BaseResponse
-//import com.hsu_irlab.domain.model.DomainBaseRanking
+import com.hsu_irlab.data.response.toDomainRanking
+import com.hsu_irlab.domain.model.DomainRanking
+import com.hsu_irlab.domain.repository.RankingRepository
+
 
 class RankingRepositoryImpl(application: Application):RankingRepository {
-    override suspend fun getRanking(): BaseResponse {
-        val response = NetworkModule.getRetrofitService.getRanking()
-//        val response = response2.body()
-//        val response =  NetworkModule.getRetrofitService.getRanking()
-
-        //이부분이 문제임
-//        return  if (response.isSuccessful) response.body() as DomainBaseRanking else DomainBaseRanking(ArrayList())
-        Log.e("responseresponseresponseresponse", "response: ${response}", )
-        Log.e("message", "getRanking: ${response.message()}", )
-        Log.e("body", "getRanking: ${response.body()}", )
-        Log.e("isSuccessful", "getRanking: ${response.isSuccessful}", )
-        return  if (response.isSuccessful) response.body() as BaseResponse else BaseResponse(ArrayList())
+    override suspend fun getRanking(): List<DomainRanking> {
+        return NetworkModule.getRetrofitService.getRanking()
+            .body()?.data?.map { it.toDomainRanking() } ?: ArrayList() // 값 돌아와서 null 아니면 domain ranking 으로 바꿔서 리턴 null
     }
-
     companion object {
         private var instance: RankingRepositoryImpl? = null
         fun getInstance(application : Application): RankingRepositoryImpl? {

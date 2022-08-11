@@ -5,5 +5,4 @@ data class DomainRanking (
     val profile_picture: String,
     val total_score: String,
     val user_id: Int
-
 )
