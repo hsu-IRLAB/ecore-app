@@ -1,5 +1,6 @@
 package com.hsu_irlab.domain.model
 
-class DomainBaseRanking (
+
+data class DomainBaseRanking (
     val data : List<DomainRanking>
 )

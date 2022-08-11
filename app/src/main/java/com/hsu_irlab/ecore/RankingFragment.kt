@@ -1,13 +1,12 @@
 package com.hsu_irlab.ecore
 
-import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import com.hsu_irlab.ecore.databinding.FragmentRankingBinding
 import com.hsu_irlab.ecore.presentaion.adapter.RankingAdapter
 import com.hsu_irlab.ecore.presentaion.viewmodel.RankingViewModel
@@ -18,9 +17,8 @@ class RankingFragment : Fragment() {
 
     private val viewModel by lazy { ViewModelProvider(this,
         RankingViewModel.Factory(requireActivity().application))[RankingViewModel::class.java] }
+
     private lateinit var retrofitAdapter: RankingAdapter
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.hsu_irlab.domain.model.DomainRanking" />
+            type="com.hsu_irlab.data.response.RankingResponse" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
