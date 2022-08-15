@@ -3,6 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/git/ecore/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/bottom_nav_colors.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ic_challenge.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ic_home.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ic_oval_shape.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ic_ranking.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ic_ranking_tablayout.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ic_ranking_top.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ic_rankingpage.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/rankin_brown.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ranking.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ranking_background.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/ranking_green.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/rankingpage.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/drawable/vector_3.xml" value="0.2995" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/activity_badge.xml" value="0.35733695652173914" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/activity_main.xml" value="0.35733695652173914" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/following_ranking.xml" value="0.35733695652173914" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/fragment_challenge.xml" value="0.35733695652173914" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/fragment_following_ranking.xml" value="0.35733695652173914" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/fragment_ranking.xml" value="0.33" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/fragment_user.xml" value="0.35733695652173914" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/fragment_whole_ranking.xml" value="0.35733695652173914" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/item_recycler_ranking.xml" value="0.9" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/ranking.xml" value="0.35733695652173914" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/ranking_back.xml" value="0.35733695652173914" />
+        <entry key="..\:/git/ecore/app/src/main/res/layout/whole_ranking.xml" value="0.35733695652173914" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/drawable/bottom_nav_colors.xml" value="0.4765" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/drawable/ic_challenge.xml" value="0.4985" />
         <entry key="..\:/myWorld/Android/ecore/app/src/main/res/drawable/ic_ranking.xml" value="0.4765" />
