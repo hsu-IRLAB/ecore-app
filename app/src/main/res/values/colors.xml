@@ -12,6 +12,7 @@
     <color name="green_300">#6D8E65</color>
     <color name="green_400">#3F5C42</color>
     <color name="underline_green_100">#A7CEA8</color>
+    <color name="underline_green_200">#DCF0A1</color>
     <color name="beige">#D2B293</color>
     <color name="yellow">#D4CD1D</color>
 </resources>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 
 class UserFragment : Fragment() {
 
@@ -19,7 +20,7 @@ class UserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val inflate = inflater.inflate(R.layout.fragment_user, container, false)
-        val button = inflate.findViewById<Button>(R.id.main_test_btn)
+        val button = inflate.findViewById<TextView>(R.id.tv_badge_all)
 
         button.setOnClickListener {
             val intent : Intent = Intent(activity,BadgeActivity::class.java)
