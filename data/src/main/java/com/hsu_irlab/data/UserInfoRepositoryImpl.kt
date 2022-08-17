@@ -6,9 +6,9 @@ import com.hsu_irlab.domain.model.DomainUserInfo
 import com.hsu_irlab.domain.repository.UserInfoRepository
 
 class UserInfoRepositoryImpl(): UserInfoRepository {
-    override suspend fun getUserInfo(user_id : Int): DomainUserInfo? {
+    override suspend fun getUserInfo(user_id : Int): DomainUserInfo {
         return NetworkModule.getRetrofitService.getUserInfo(user_id)
-            .body()?.Data?.toDomainUserInfo() }
+            .body()?.Data?.toDomainUserInfo()?:DomainUserInfo(0,0,0,0,"","",0) }
     companion object {
         private var instance: UserInfoRepositoryImpl? = null
         fun getInstance() : UserInfoRepositoryImpl? {
