@@ -1,4 +1,4 @@
-package com.hsu_irlab.data.response
+package com.hsu_irlab.data.response.ranking
 
 import com.hsu_irlab.domain.model.DomainRanking
 
