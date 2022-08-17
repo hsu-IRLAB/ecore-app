@@ -1,8 +1,9 @@
-package com.hsu_irlab.data.response
+package com.hsu_irlab.data.response.ranking
 
 import com.google.gson.annotations.SerializedName
 
-data class BaseResponse (
-    @SerializedName("Data") val data : List<RankingResponse>
+
+data class RakingResponse (
+    @SerializedName("Data") val data : List<RankingDataResponse>
     )
 

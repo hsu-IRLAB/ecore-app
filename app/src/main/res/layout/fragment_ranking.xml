@@ -48,40 +48,43 @@
             android:id="@+id/tv_ranking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="랭킹"
             android:textColor="#000000"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tl_ranking"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tl_ranking"
-            android:layout_width="340dp"
-            android:layout_height="30dp"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/ic_ranking_tablayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ranking">
+            app:layout_constraintTop_toBottomOf="@+id/tv_ranking"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전체" />
+                android:text="전체"
+                android:textStyle="bold" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="팔로워" />
+                android:text="팔로워"
+                android:textStyle="bold" />
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp2_ranking"
-            android:layout_width="340dp"
+            android:layout_width="320dp"
             android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
             android:background="#99E0E9D8"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +96,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="@color/green_200"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,10 +104,10 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/tv_myRanking"
+                android:id="@+id/tv_ranking_grade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="30dp"
                 android:text="300."
                 android:textColor="@color/green_400"
                 android:textSize="20sp"
@@ -115,57 +118,57 @@
                 app:layout_constraintVertical_bias="0.509" />
 
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/ic_launcher_foreground"
+                android:id="@+id/iv_profile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/ic_user_testuserimage"
                 android:foregroundGravity="center"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_myRanking"
-                app:layout_constraintStart_toEndOf="@+id/tv_myRanking"
-                app:layout_constraintTop_toTopOf="@+id/tv_myRanking"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_ranking_grade"
+                app:layout_constraintStart_toEndOf="@+id/tv_ranking_grade"
+                app:layout_constraintTop_toTopOf="@+id/tv_ranking_grade"
                 app:layout_constraintVertical_bias="0.666"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/ic_user_testuserimage" />
 
             <TextView
-                android:id="@+id/tv_myRanking_name"
+                android:id="@+id/tv_ranking_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="15dp"
                 android:text="핑크빈"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/imageView2"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+                app:layout_constraintStart_toEndOf="@+id/iv_profile"
+                app:layout_constraintTop_toTopOf="@+id/iv_profile"
                 app:layout_constraintVertical_bias="0.666" />
 
             <TextView
-                android:id="@+id/tv_myRanking_score"
+                android:id="@+id/tv_ranking_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="10dp"
                 android:text="1,800"
                 android:textColor="@color/green_300"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_myRanking_name"
-                app:layout_constraintEnd_toStartOf="@+id/tv_myRanking_ecore"
-                app:layout_constraintTop_toTopOf="@+id/tv_myRanking_name"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_ranking_name"
+                app:layout_constraintEnd_toStartOf="@+id/tv_ranking_ecore"
+                app:layout_constraintTop_toTopOf="@+id/tv_ranking_name"
                 app:layout_constraintVertical_bias="0.833" />
 
             <TextView
-                android:id="@+id/tv_myRanking_ecore"
+                android:id="@+id/tv_ranking_ecore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="30dp"
                 android:text="ecore"
                 android:textColor="@color/green_400"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_myRanking_score"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_ranking_score"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_myRanking_score" />
+                app:layout_constraintTop_toTopOf="@+id/tv_ranking_score" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -176,10 +179,10 @@
             android:layout_marginStart="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.002"
+            app:layout_constraintHorizontal_bias="0.016"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.906"
+            app:layout_constraintVertical_bias="0.923"
             app:srcCompat="@drawable/ic_me" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@ package com.hsu_irlab.data
 
 import android.app.Application
 import com.hsu_irlab.data.network.NetworkModule
-import com.hsu_irlab.data.response.toDomainRanking
+import com.hsu_irlab.data.response.ranking.toDomainRanking
 import com.hsu_irlab.domain.model.DomainRanking
 import com.hsu_irlab.domain.repository.RankingRepository
 
