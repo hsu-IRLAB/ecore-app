@@ -19,4 +19,5 @@ class RankingRepositoryImpl() :RankingRepository {
             return instance
         }
     }
+
 }
