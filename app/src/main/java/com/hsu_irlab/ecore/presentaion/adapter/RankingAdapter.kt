@@ -1,12 +1,20 @@
 package com.hsu_irlab.ecore.presentaion.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.hsu_irlab.domain.model.DomainRanking
 import com.hsu_irlab.ecore.databinding.ItemRecyclerRankingBinding
+import java.text.DecimalFormat
 
 class RankingAdapter :RecyclerView.Adapter<RankingAdapter.ViewHolder>(){
 
@@ -18,12 +26,26 @@ class RankingAdapter :RecyclerView.Adapter<RankingAdapter.ViewHolder>(){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setItem(items[position])
+        holder.itemView.setOnClickListener{ //클릭 이벤트 발생 !!
+            Toast.makeText(holder.itemView.context,"${items[position].name}",Toast.LENGTH_SHORT).show()
+        }
     }
 
     inner class ViewHolder(private val binding: ItemRecyclerRankingBinding) : RecyclerView.ViewHolder(binding.root) {
+        val dec=DecimalFormat("#,###")
         fun setItem(item: DomainRanking){
             binding.tvRankingName.text =  item.name
-            binding.tvRankingScore.text =  item.total_score
+            binding.tvRankingScore.text =  dec.format(item.total_score.toInt())
+            binding.tvRankingGrade.text = "${adapterPosition+1}."
+            when(binding.tvRankingGrade.text){
+                "1." -> binding.tvRankingGrade.setTextColor(Color.parseColor("#FFBD1B"))
+                "2." -> binding.tvRankingGrade.setTextColor(Color.parseColor("#C0C0C0"))
+                "3." -> binding.tvRankingGrade.setTextColor(Color.parseColor("#BF8970"))
+            }
+            Glide.with(itemView)
+                .load("http://210.119.104.148:3000/upload/dog.jpg")
+                .circleCrop()
+                .into(binding.ivProfile)
         }
     }
 
