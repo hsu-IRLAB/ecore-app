@@ -13,5 +13,5 @@ data class UserInfoDataSource(
 )
 
 fun UserInfoDataSource.toDomainUserInfo(): DomainUserInfo = DomainUserInfo(
-    challenge_done,daily_challenge_done,following,follwer,name,profile_img,total_score
+    challenge_done,daily_challenge_done,following,follwer,name,profile_img?:"",total_score
 )
