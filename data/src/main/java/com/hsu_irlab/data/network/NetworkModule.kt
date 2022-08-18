@@ -6,14 +6,14 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 object NetworkModule {
-    private const val TEST_URL = BuildConfig.TEST_URL
+    private const val BASE_URL = BuildConfig.BASE_URL
     private val okHttpClient = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.NONE
+        level = HttpLoggingInterceptor.Level.BODY
     }).addInterceptor {
         // Request
         val request = it.request()
             .newBuilder()
-//            .addHeader("jwt_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVFVERU5UX0lEIjoiMjAxNzEzMDIiLCJOTSI6Iu2ZjeyasOyEsSIsIkxFVkVMIjo4LCJERVBUX05NIjoi7Lu07ZOo7YSw6rO17ZWZ67aAIiwiU0NIWVIiOiI0IiwiaWF0IjoxNjU5OTAyOTA5LCJleHAiOjE2NjExMTI1MDksImlzcyI6IkhPU0VPTk9USUNFIn0.zR26QU5ODDhr9rRvupEL_EIeHo-a_LebuAt77bxqu7I")
+            .addHeader("jwt_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVU0VSX0lEIjo5OSwiTkFNRSI6IuydtOujqOyWtOyniCDqv4giLCJpYXQiOjE2NjA3MTI5NjQsImV4cCI6MTY4NjYzMjk2NCwiaXNzIjoiRUNPUkUifQ.sH3EakG1ltRMi9MwiF0n35LOqNGk72pgkSojFqXzHvk")
             .build()
         // Response
         val response = it.proceed(request)
@@ -22,7 +22,7 @@ object NetworkModule {
 
     private val getRetrofit by lazy{
         Retrofit.Builder()
-            .baseUrl(TEST_URL)
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
