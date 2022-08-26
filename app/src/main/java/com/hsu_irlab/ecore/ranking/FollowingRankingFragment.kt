@@ -7,16 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.hsu_irlab.ecore.databinding.FragmentFollowingRankingBinding
-import com.hsu_irlab.ecore.databinding.FragmentWholeRankingBinding
 import com.hsu_irlab.ecore.presentaion.adapter.RankingAdapter
-import com.hsu_irlab.ecore.presentaion.viewmodel.RankingViewModel
+import com.hsu_irlab.ecore.presentaion.viewmodel.ranking.FollowingRankingViewModel
 
 class FollowingRankingFragment:Fragment() {
 
     private val binding by lazy { FragmentFollowingRankingBinding.inflate(layoutInflater) }
 
     private val viewModel by lazy { ViewModelProvider(this,
-        RankingViewModel.Factory())[RankingViewModel::class.java] }
+        FollowingRankingViewModel.Factory())[FollowingRankingViewModel::class.java] }
 
     private lateinit var retrofitAdapter: RankingAdapter
 

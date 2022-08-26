@@ -7,8 +7,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiInterface {
-    @GET("/ranking")
-    suspend fun getRanking(): Response<RakingResponse>
+    @GET("/rank")
+    suspend fun getRanking(
+        @Query("type")
+        type : String
+    ): Response<RakingResponse>
 
     @GET("/user/info")
     suspend fun getUserInfo(

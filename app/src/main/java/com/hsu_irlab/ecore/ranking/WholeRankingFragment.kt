@@ -1,22 +1,25 @@
 package com.hsu_irlab.ecore.ranking
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
+import com.hsu_irlab.ecore.EcoreApp
 import com.hsu_irlab.ecore.databinding.FragmentRankingBinding
 import com.hsu_irlab.ecore.databinding.FragmentWholeRankingBinding
 import com.hsu_irlab.ecore.presentaion.adapter.RankingAdapter
-import com.hsu_irlab.ecore.presentaion.viewmodel.RankingViewModel
+import com.hsu_irlab.ecore.presentaion.viewmodel.ranking.WholeRankingViewModel
 
 class WholeRankingFragment : Fragment(){
 
     private val binding by lazy { FragmentWholeRankingBinding.inflate(layoutInflater) }
-
     private val viewModel by lazy { ViewModelProvider(this,
-        RankingViewModel.Factory())[RankingViewModel::class.java] }
+        WholeRankingViewModel.Factory())[WholeRankingViewModel::class.java] }
 
     private lateinit var retrofitAdapter: RankingAdapter
 
@@ -24,6 +27,7 @@ class WholeRankingFragment : Fragment(){
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
         setView() // 리사이클러 뷰 연결
         setObserver() //
     }
@@ -39,6 +43,7 @@ class WholeRankingFragment : Fragment(){
         }
         binding.rvWholeRanking.adapter = retrofitAdapter // 리사이클러 뷰 연결
     }
+
     private fun setObserver() {
         // 뷰모델 관찰
         viewModel.retrofitRanking.observe(this) {
