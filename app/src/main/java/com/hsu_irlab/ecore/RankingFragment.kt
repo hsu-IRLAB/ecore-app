@@ -32,6 +32,7 @@ class RankingFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner=this
         binding.viewmodel=viewModel
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,10 +43,6 @@ class RankingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Glide.with(this)
-            .load("${BuildConfig.BASE_URL}/upload/${viewModel.myRanking.value?.profile_picture}")
-            .circleCrop()
-            .into(binding.ivProfile)
         binding.vp2Ranking.adapter=RankingPagerAdapter(requireActivity())
         binding.vp2Ranking.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageScrolled(
@@ -58,7 +55,12 @@ class RankingFragment : Fragment() {
                 {
                     0-> viewModel.getMyRanking("all")
                     1->viewModel.getMyRanking("following")
+
                 }
+                Glide.with(this@RankingFragment)
+                    .load("${BuildConfig.BASE_URL}/upload/${viewModel.myRanking.value?.profile_picture}")
+                    .circleCrop()
+                    .into(binding.ivProfile)
             }
         })
         TabLayoutMediator(binding.tlRanking,binding.vp2Ranking){ tab,position ->
