@@ -1,13 +1,11 @@
-package com.hsu_irlab.ecore.presentaion.viewmodel.ranking
+package com.hsu_irlab.ecore.presentation.viewmodel.ranking
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.hsu_irlab.data.RankingRepositoryImpl
 import com.hsu_irlab.domain.model.DomainRanking
-import com.hsu_irlab.ecore.EcoreApp
 import kotlinx.coroutines.launch
 
 class WholeRankingViewModel(private val repository: RankingRepositoryImpl):ViewModel() {

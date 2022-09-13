@@ -1,4 +1,4 @@
-package com.hsu_irlab.ecore.presentaion.viewmodel
+package com.hsu_irlab.ecore.presentation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -9,21 +9,20 @@ import com.hsu_irlab.data.UserInfoRepositoryImpl
 import com.hsu_irlab.domain.model.DomainUserInfo
 import kotlinx.coroutines.launch
 
-class UserViewModel(private val repository: UserInfoRepositoryImpl): ViewModel() {
-    private val userId = 99   // 임시 userid 실제로는 사용자의 아이디가 들어가야함
-
+class HomeViewModel(private val repository: UserInfoRepositoryImpl,val user_id:Int): ViewModel() {
     private val _retrofitUserInfo = MutableLiveData<DomainUserInfo>()
     val retrofitUserInfo: MutableLiveData<DomainUserInfo>
         get() = _retrofitUserInfo
-
-    init {
+    init { // 초기화 시 서버에서 데이터를 받아온다.
         viewModelScope.launch {
-            _retrofitUserInfo.value = repository.getUserInfo(userId)
+//            _retrofitUserInfo.value = repository.getUserInfo(user_id)
+            Log.e("dd", "${_retrofitUserInfo.value}", )
         }
     }
-    class Factory() : ViewModelProvider.Factory { // factory pattern
+    class Factory(val user_id:Int) : ViewModelProvider.Factory { // factory pattern
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return UserInfoRepositoryImpl.getInstance()?.let { UserViewModel(it) } as T
+            return UserInfoRepositoryImpl.getInstance()?.let {HomeViewModel(it,user_id) } as T
         }
     }
+
 }

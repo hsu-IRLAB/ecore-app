@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hsu_irlab.ecore.presentaion.viewmodel.HomeViewModel" />
+            type="com.hsu_irlab.ecore.presentation.viewmodel.HomeViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

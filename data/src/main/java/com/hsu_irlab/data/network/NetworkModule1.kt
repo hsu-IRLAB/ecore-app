@@ -5,9 +5,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-object NetworkModule {
+object NetworkModule1 {
     private const val BASE_URL = BuildConfig.BASE_URL
-    private val okHttpClient = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
+    private val okHttpClient = OkHttpClient.Builder().
+    addInterceptor(HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }).addInterceptor {
         // Request

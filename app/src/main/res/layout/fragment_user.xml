@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hsu_irlab.ecore.presentaion.viewmodel.UserViewModel" />
+            type="com.hsu_irlab.ecore.presentation.viewmodel.UserViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

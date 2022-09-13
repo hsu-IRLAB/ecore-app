@@ -6,22 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.hsu_irlab.ecore.databinding.FragmentHomeBinding
-import com.hsu_irlab.ecore.presentaion.viewmodel.HomeViewModel
+import com.hsu_irlab.ecore.presentation.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
-
-    private val viewModel by lazy { ViewModelProvider(this,
-        HomeViewModel.Factory(99))[HomeViewModel::class.java] }
+//
+//    private val viewModel by lazy { ViewModelProvider(this,
+//        HomeViewModel.Factory(99))[HomeViewModel::class.java] }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+//        binding.viewModel = viewModel
+//        binding.lifecycleOwner = this
 
 //        setView() // 리사이클러 뷰 연결
-        setObserver() //
+//        setObserver() //
     }
 
     override fun onCreateView(
@@ -37,16 +41,16 @@ class HomeFragment : Fragment() {
 ////        }
 ////        binding.rvFollowingRanking.adapter = retrofitAdapter // 리사이클러 뷰 연결
 //    }
-    private fun setObserver() {
-        // 뷰모델 관찰
-        viewModel.retrofitUserInfo.observe(this) {
-            viewModel.retrofitUserInfo.value?.let { it ->
-                binding.tvHomeName.text=it.name
-                binding.tvEcoretotValue.text=it.total_score.toString()
-                binding.tvHomeName.text=it.name
-            }
-        }
-
-    }
+//    private fun setObserver() {
+//        // 뷰모델 관찰
+//        viewModel.retrofitUserInfo.observe(this) {
+//            viewModel.retrofitUserInfo.value?.let { it ->
+//                binding.tvHomeName.text=it.name
+//                binding.tvEcoretotValue.text=it.total_score.toString()
+//                binding.tvHomeName.text=it.name
+//            }
+//        }
+//
+//    }
 
 }

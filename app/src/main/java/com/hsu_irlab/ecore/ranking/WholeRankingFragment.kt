@@ -1,19 +1,14 @@
 package com.hsu_irlab.ecore.ranking
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
-import com.hsu_irlab.ecore.EcoreApp
-import com.hsu_irlab.ecore.databinding.FragmentRankingBinding
 import com.hsu_irlab.ecore.databinding.FragmentWholeRankingBinding
-import com.hsu_irlab.ecore.presentaion.adapter.RankingAdapter
-import com.hsu_irlab.ecore.presentaion.viewmodel.ranking.WholeRankingViewModel
+import com.hsu_irlab.ecore.presentation.adapter.RankingAdapter
+import com.hsu_irlab.ecore.presentation.viewmodel.ranking.WholeRankingViewModel
 
 class WholeRankingFragment : Fragment(){
 

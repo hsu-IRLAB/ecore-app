@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.hsu_irlab.ecore.databinding.FragmentFollowingRankingBinding
-import com.hsu_irlab.ecore.presentaion.adapter.RankingAdapter
-import com.hsu_irlab.ecore.presentaion.viewmodel.ranking.FollowingRankingViewModel
+import com.hsu_irlab.ecore.presentation.adapter.RankingAdapter
+import com.hsu_irlab.ecore.presentation.viewmodel.ranking.FollowingRankingViewModel
 
 class FollowingRankingFragment:Fragment() {
 

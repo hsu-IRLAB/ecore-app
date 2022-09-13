@@ -1,4 +1,4 @@
-package com.hsu_irlab.ecore.presentaion.viewmodel.ranking
+package com.hsu_irlab.ecore.presentation.viewmodel.ranking
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

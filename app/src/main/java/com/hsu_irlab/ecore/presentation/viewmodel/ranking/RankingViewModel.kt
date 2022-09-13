@@ -1,4 +1,4 @@
-package com.hsu_irlab.ecore.presentaion.viewmodel.ranking
+package com.hsu_irlab.ecore.presentation.viewmodel.ranking
 
 import android.util.Log
 import androidx.lifecycle.*
