@@ -65,6 +65,7 @@ class HomeFragment : Fragment() {
         model.dailyInfo.observe(viewLifecycleOwner) {
             binding.tvDailyHome.text = it.title
             binding.tvEcoreValue.text = it.daily_reward.toString()
+            binding.tvHomeLike.text = "0"
         }
     }
 
