@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BadgeViewModel @Inject constructor(
-    private val badgeUseCase: BadgeUseCase
+    badgeUseCase: BadgeUseCase
 ): ViewModel() {
     private var _itemList: MutableLiveData<List<DomainBadge>> = MutableLiveData(listOf())
     val itemList : MutableLiveData<List<DomainBadge>>
