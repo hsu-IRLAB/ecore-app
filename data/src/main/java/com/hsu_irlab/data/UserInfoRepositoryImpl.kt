@@ -8,12 +8,6 @@ import com.hsu_irlab.domain.repository.UserInfoRepository
 
 class UserInfoRepositoryImpl(): UserInfoRepository {
     override suspend fun getUserInfo(user_id : Int): DomainUserInfo {
-        val resData = NetworkModule.getRetrofitService.getUserInfo(user_id)
-            .body()?.Data
-
-//        Log.e("d", "getUserInfo:ssssssssssss $resData", )
-
-
         return NetworkModule.getRetrofitService.getUserInfo(user_id)
             .body()?.Data?.toDomainUserInfo()?:DomainUserInfo(0,0,0,0,"","",0) }
     companion object {

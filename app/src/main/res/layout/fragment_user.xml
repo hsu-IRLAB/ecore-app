@@ -13,7 +13,6 @@
         android:background="@drawable/bg_user"
         tools:context=".UserFragment">
 
-
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="16dp"
@@ -59,25 +58,25 @@
             android:layout_width="0.5dp"
             android:layout_height="40dp"
 
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:background="@color/beige"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.472"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view4" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_myecore" />
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <TextView
             android:id="@+id/tv_myecore"
@@ -153,24 +152,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="48dp"
+            android:layout_marginTop="23dp"
             android:text="배지"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/view2"
             app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_following_value"
-            app:layout_constraintVertical_bias="0.696" />
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tv_badge_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="19dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="전체보기"
-            android:textSize="12sp"
+            android:src="@drawable/ic_baseline_arrow_forward_"
             app:layout_constraintBottom_toBottomOf="@+id/tv_badge"
-            app:layout_constraintEnd_toEndOf="@+id/view2" />
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="@+id/tv_badge" />
 
         <View
             android:id="@+id/view2"
@@ -178,7 +174,7 @@
             android:layout_height="0.5dp"
 
             android:layout_marginStart="20dp"
-            android:layout_marginTop="124dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="20dp"
             android:background="@color/beige"
             app:layout_constraintEnd_toEndOf="parent"
@@ -220,12 +216,11 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="23dp"
             android:text="완료한 도전"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
+            app:layout_constraintStart_toStartOf="@+id/tv_badge"
+            app:layout_constraintTop_toBottomOf="@+id/tv_badge" />
 
         <Button
             android:id="@+id/button2"
@@ -314,23 +309,52 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="115dp"
             android:layout_height="115dp"
-            android:layout_marginTop="64dp"
             android:background="@drawable/ic_user_userimage_background"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.105">
 
             <ImageView
                 android:id="@+id/iv_userimage"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="121dp"
+                android:layout_height="113dp"
+                android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_change_profileimg"
+            android:layout_width="52dp"
+            android:layout_height="42dp"
+            android:elevation="10dp"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.606"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.22"
+            app:srcCompat="@drawable/ic_user_cam" />
+
+        <ImageView
+            android:id="@+id/iv_change_nickname"
+            android:background="?attr/selectableItemBackground"
+            android:layout_width="35dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_name"
+            app:srcCompat="@drawable/ic_user_changenickname" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

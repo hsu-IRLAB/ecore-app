@@ -10,5 +10,6 @@ data class RankingDataResponse (
 )
 
 fun RankingDataResponse.toDomainRanking(): DomainRanking = DomainRanking(
-     name,profile_picture,total_score,user_id)
+     name,profile_picture,total_score,user_id
+)
 

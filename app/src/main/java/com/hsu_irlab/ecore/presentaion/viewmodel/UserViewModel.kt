@@ -10,7 +10,7 @@ import com.hsu_irlab.domain.model.DomainUserInfo
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val repository: UserInfoRepositoryImpl): ViewModel() {
-    private val userId = 99   // 임시 userid 실제로는 사용자의 아이디가 들어가야함
+    private val userId = 3  // 임시 userid 실제로는 사용자의 아이디가 들어가야함
 
     private val _retrofitUserInfo = MutableLiveData<DomainUserInfo>()
     val retrofitUserInfo: MutableLiveData<DomainUserInfo>

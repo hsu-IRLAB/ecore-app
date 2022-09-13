@@ -16,8 +16,9 @@ class HomeFragment : Fragment() {
     private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
 
     private val viewModel by lazy { ViewModelProvider(this,
-        HomeViewModel.Factory(99))[HomeViewModel::class.java] }
+        HomeViewModel.Factory(3))[HomeViewModel::class.java] }
 
+    //TODO 여기 하드코딩 되어있음
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel

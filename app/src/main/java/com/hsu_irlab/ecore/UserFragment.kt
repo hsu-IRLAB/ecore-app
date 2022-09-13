@@ -1,21 +1,26 @@
 package com.hsu_irlab.ecore
 
-import android.annotation.SuppressLint
+import android.R
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hsu_irlab.ecore.databinding.FragmentUserBinding
 import android.widget.Button
-import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.hsu_irlab.data.BuildConfig.BASE_URL
-import com.hsu_irlab.domain.model.DomainRanking
 import com.hsu_irlab.domain.model.DomainUserInfo
+import com.hsu_irlab.ecore.databinding.FragmentUserBinding
 import com.hsu_irlab.ecore.presentaion.viewmodel.UserViewModel
+
 
 class UserFragment : Fragment() {
 
@@ -24,13 +29,10 @@ class UserFragment : Fragment() {
     private val viewModel by lazy {
         ViewModelProvider(this,UserViewModel.Factory())[UserViewModel::class.java]}
 
-    private var userInfo : DomainUserInfo? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
     }
 
     override fun onCreateView(
@@ -38,17 +40,30 @@ class UserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        /*userInfo=viewModel.retrofitUserInfo.value
-        binding.tvName.text = userInfo!!.name
-        */
-
         setObserver()
-
-
 
         binding.tvBadgeAll.setOnClickListener {
             val intent : Intent = Intent(activity,BadgeActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.ivChangeProfileimg.setOnClickListener {
+
+        }
+
+        binding.ivChangeNickname.setOnClickListener {
+            val bundle = Bundle()
+            val dialog: ChangeNickNameDialogFragment = ChangeNickNameDialogFragment().getInstance()
+            dialog.arguments = bundle
+            activity?.supportFragmentManager?.let {
+                fragmentManager -> dialog.show(
+                    fragmentManager,dialog.tag
+                )
+            }
+        }
+
+        binding.ivUserimage.setOnClickListener {
+
         }
 
         return binding.root
