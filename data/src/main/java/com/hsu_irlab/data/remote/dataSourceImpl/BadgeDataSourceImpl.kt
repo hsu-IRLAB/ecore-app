@@ -10,7 +10,7 @@ import javax.inject.Inject
 class BadgeDataSourceImpl @Inject constructor(
     private val retrofit: Retrofit
 ): BadgeDataSource {
-    override suspend fun getBadge(): Response<BadgeDto> {
+    override suspend fun getBadge(): BadgeDto{
         return retrofit.create(BadgeDataSource::class.java).getBadge()
     }
 }

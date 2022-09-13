@@ -9,6 +9,7 @@ class BadgeRepositoryImpl (
     ) :BadgeRepository{
     override suspend fun getBadge(): List<DomainBadge> {
         val data = api.getBadge()
-        return data.body()?.Data?.map { it.toDomainBadge() } ?: arrayListOf()
+//        return data.body()?.Data?.map { it.toDomainBadge() } ?: arrayListOf()
+        return data.Data.map { it.toDomainBadge() } ?: arrayListOf()
     }
 }

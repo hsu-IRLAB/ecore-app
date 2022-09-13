@@ -9,7 +9,7 @@ import javax.inject.Inject
 class UserDataSourceImpl @Inject constructor(
     private val retrofit: Retrofit
 ): UserDataSource {
-    override suspend fun getUserInfo(user_id:Int): Response<UserInfoDto> {
+    override suspend fun getUserInfo(user_id:Int): UserInfoDto {
         return retrofit.create(UserDataSource::class.java).getUserInfo(user_id)
     }
 }

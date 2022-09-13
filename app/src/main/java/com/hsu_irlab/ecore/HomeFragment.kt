@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.hsu_irlab.ecore.databinding.FragmentBadgeBinding
 import com.hsu_irlab.ecore.databinding.FragmentHomeBinding
+import com.hsu_irlab.ecore.presentation.viewmodel.BadgeViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.HomeViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +21,9 @@ import java.text.DecimalFormat
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+
     lateinit var binding : FragmentHomeBinding
+    private val model: HomeViewModel by viewModels()
     private val mainModel : MainViewModel by activityViewModels()
 
 //    private val viewModel by lazy { ViewModelProvider(this,
@@ -59,6 +62,10 @@ class HomeFragment : Fragment() {
 
         }
 
+        model.dailyInfo.observe(viewLifecycleOwner) {
+            binding.tvDailyHome.text = it.title
+            binding.tvEcoreValue.text = it.daily_reward.toString()
+        }
     }
 
 }

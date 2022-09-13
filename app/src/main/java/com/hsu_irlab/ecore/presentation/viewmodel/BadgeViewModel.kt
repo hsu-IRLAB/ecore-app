@@ -20,8 +20,8 @@ class BadgeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch{
-            _itemList.postValue(badgeUseCase.getBadge())
-            Log.e("TAG", ": ${itemList.value}", )
+            val data = badgeUseCase.getBadge()
+            _itemList.postValue(data)
         }
     }
 

@@ -2,7 +2,9 @@ package com.hsu_irlab.ecore.di
 
 import com.hsu_irlab.data.remote.dataSourceImpl.BadgeDataSourceImpl
 import com.hsu_irlab.data.remote.dataSource.BadgeDataSource
+import com.hsu_irlab.data.remote.dataSource.DailyDataSource
 import com.hsu_irlab.data.remote.dataSource.UserDataSource
+import com.hsu_irlab.data.remote.dataSourceImpl.DailyDataSourceImpl
 import com.hsu_irlab.data.remote.dataSourceImpl.UserDataSourceImpl
 import dagger.Module
 import dagger.Provides
@@ -27,6 +29,14 @@ object DataSourceModule {
         retrofit: Retrofit
     ): UserDataSource {
         return UserDataSourceImpl(retrofit)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDailyDataSource(
+        retrofit: Retrofit
+    ): DailyDataSource {
+        return DailyDataSourceImpl(retrofit)
     }
 
 

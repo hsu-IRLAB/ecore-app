@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface BadgeDataSource {
     @GET("/user/badge")
-    suspend fun getBadge():Response<BadgeDto>
+    suspend fun getBadge():BadgeDto
 }

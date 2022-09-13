@@ -10,6 +10,6 @@ interface UserDataSource {
     suspend fun getUserInfo(
         @Query("user_id")
         user_id: Int
-    ): Response<UserInfoDto>
+    ): UserInfoDto
 
 }

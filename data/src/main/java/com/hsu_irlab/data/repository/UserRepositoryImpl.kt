@@ -13,6 +13,7 @@ class UserRepositoryImpl (
 
     override suspend fun getUserInfo(user_id: Int): DomainUserInfo {
         val data = api.getUserInfo(user_id)
-        return data.body()?.Data?.toDomainUserInfo()?:DomainUserInfo(-1,-1,-1,-1,"","",-1)
+        return data.Data.toDomainUserInfo()
+//        return data.body()?.Data?.toDomainUserInfo()?:DomainUserInfo(-1,-1,-1,-1,"","",-1)
     }
 }

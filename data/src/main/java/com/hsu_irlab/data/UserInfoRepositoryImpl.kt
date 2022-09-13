@@ -9,10 +9,6 @@ class UserInfoRepositoryImpl(): UserRepository {
     override suspend fun getUserInfo(user_id : Int): DomainUserInfo {
         val resData = NetworkModule1.getRetrofitService.getUserInfo(user_id)
             .body()?.Data
-
-//        Log.e("d", "getUserInfo:ssssssssssss $resData", )
-
-
         return NetworkModule1.getRetrofitService.getUserInfo(user_id)
             .body()?.Data?.toDomainUserInfo()?:DomainUserInfo(0,0,0,0,"","",0) }
     companion object {

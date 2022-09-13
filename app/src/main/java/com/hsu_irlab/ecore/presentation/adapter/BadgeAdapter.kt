@@ -1,6 +1,7 @@
 package com.hsu_irlab.ecore.presentation.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +22,7 @@ class BadgeAdapter : RecyclerView.Adapter<BadgeAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemRecyclerBadgeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setItem(item: DomainBadge){
+            Log.e("TAG", "setItem: $item", )
             binding.tvBadgeTitle.text = item.title
             binding.tvBadgeDetail.text = item.detail
         }
