@@ -1,7 +1,9 @@
 package com.hsu_irlab.ecore.di
 
 import com.hsu_irlab.domain.repository.BadgeRepository
+import com.hsu_irlab.domain.repository.UserRepository
 import com.hsu_irlab.domain.use_case.BadgeUseCase
+import com.hsu_irlab.domain.use_case.UserUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,5 +20,10 @@ object UseCaseModule {
         return BadgeUseCase(repository)
     }
 
+    @Provides
+    @Singleton
+    fun provideUserUseCase(repository: UserRepository):UserUseCase{
+        return UserUseCase(repository)
+    }
 
 }

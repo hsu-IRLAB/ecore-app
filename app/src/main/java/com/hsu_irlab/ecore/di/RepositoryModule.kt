@@ -1,8 +1,11 @@
 package com.hsu_irlab.ecore.di
 
-import com.hsu_irlab.data.remote.BadgeDataSource
+import com.hsu_irlab.data.remote.dataSource.BadgeDataSource
+import com.hsu_irlab.data.remote.dataSource.UserDataSource
 import com.hsu_irlab.data.repository.BadgeRepositoryImpl
+import com.hsu_irlab.data.repository.UserRepositoryImpl
 import com.hsu_irlab.domain.repository.BadgeRepository
+import com.hsu_irlab.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,8 +18,16 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideBadgeRepository(
-        api:BadgeDataSource
+        api: BadgeDataSource
     ):BadgeRepository{
         return BadgeRepositoryImpl(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(
+        api: UserDataSource
+    ):UserRepository{
+        return UserRepositoryImpl(api)
     }
 }

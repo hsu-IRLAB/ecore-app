@@ -3,11 +3,11 @@ package com.hsu_irlab.data.remote.dto
 import com.hsu_irlab.domain.model.DomainBadge
 
 data class BadgeDto(
-    val Data: List<BadgeData>,
+    val Data: List<Badge>,
     val Message: String
 )
 
-data class BadgeData(
+data class Badge(
     val badge_date: String,
     val badge_img: String,
     val detail: String,

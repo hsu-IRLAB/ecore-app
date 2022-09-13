@@ -1,4 +1,4 @@
-package com.hsu_irlab.data.remote
+package com.hsu_irlab.data.remote.dataSource
 
 import com.hsu_irlab.data.remote.dto.BadgeDto
 import retrofit2.Response

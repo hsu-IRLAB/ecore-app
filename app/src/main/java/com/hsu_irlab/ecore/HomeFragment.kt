@@ -5,34 +5,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.hsu_irlab.ecore.databinding.FragmentBadgeBinding
 import com.hsu_irlab.ecore.databinding.FragmentHomeBinding
 import com.hsu_irlab.ecore.presentation.viewmodel.HomeViewModel
+import com.hsu_irlab.ecore.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.DecimalFormat
 
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-    private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
-//
+    lateinit var binding : FragmentHomeBinding
+    private val mainModel : MainViewModel by activityViewModels()
+
 //    private val viewModel by lazy { ViewModelProvider(this,
 //        HomeViewModel.Factory(99))[HomeViewModel::class.java] }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding.viewModel = viewModel
-//        binding.lifecycleOwner = this
-
-//        setView() // 리사이클러 뷰 연결
-//        setObserver() //
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setObserver()
+
     }
 
 //    private fun setView(){
@@ -41,16 +50,15 @@ class HomeFragment : Fragment() {
 ////        }
 ////        binding.rvFollowingRanking.adapter = retrofitAdapter // 리사이클러 뷰 연결
 //    }
-//    private fun setObserver() {
-//        // 뷰모델 관찰
-//        viewModel.retrofitUserInfo.observe(this) {
-//            viewModel.retrofitUserInfo.value?.let { it ->
-//                binding.tvHomeName.text=it.name
-//                binding.tvEcoretotValue.text=it.total_score.toString()
-//                binding.tvHomeName.text=it.name
-//            }
-//        }
-//
-//    }
+    private fun setObserver() {
+        // 뷰모델 관찰
+        mainModel.userInfo.observe(viewLifecycleOwner) {
+            binding.tvHomeName.text = it.name
+            val dec = DecimalFormat("#,###")
+            binding.tvEcoretotValue.text = dec.format(it.total_score)
+
+        }
+
+    }
 
 }

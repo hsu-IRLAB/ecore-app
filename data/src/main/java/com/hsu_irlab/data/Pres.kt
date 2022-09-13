@@ -8,4 +8,9 @@ class Prefs(private val prefs: SharedPreferences) {
         set(jwt:String){
             prefs.edit().putString("JWT_TOKEN",jwt).apply()
         }
+    var user_id:Int
+        get() = prefs.getInt("USER_ID",-1)
+        set(user_id:Int){
+            prefs.edit().putInt("USER_ID",user_id).apply()
+        }
 }

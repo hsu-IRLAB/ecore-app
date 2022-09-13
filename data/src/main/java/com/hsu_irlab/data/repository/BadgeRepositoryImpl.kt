@@ -1,7 +1,6 @@
 package com.hsu_irlab.data.repository
 
-import android.util.Log
-import com.hsu_irlab.data.remote.BadgeDataSource
+import com.hsu_irlab.data.remote.dataSource.BadgeDataSource
 import com.hsu_irlab.domain.model.DomainBadge
 import com.hsu_irlab.domain.repository.BadgeRepository
 

@@ -1,11 +1,9 @@
-package com.hsu_irlab.data
+package com.hsu_irlab.data.remote.dataSourceImpl
 
-import android.util.Log
-import com.hsu_irlab.data.remote.BadgeDataSource
+import com.hsu_irlab.data.remote.dataSource.BadgeDataSource
 import com.hsu_irlab.data.remote.dto.BadgeDto
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.create
 import javax.inject.Inject
 
 

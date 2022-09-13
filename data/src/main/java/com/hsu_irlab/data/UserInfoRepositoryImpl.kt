@@ -3,9 +3,9 @@ package com.hsu_irlab.data
 import com.hsu_irlab.data.network.NetworkModule1
 import com.hsu_irlab.data.response.userinfo.toDomainUserInfo
 import com.hsu_irlab.domain.model.DomainUserInfo
-import com.hsu_irlab.domain.repository.UserInfoRepository
+import com.hsu_irlab.domain.repository.UserRepository
 
-class UserInfoRepositoryImpl(): UserInfoRepository {
+class UserInfoRepositoryImpl(): UserRepository {
     override suspend fun getUserInfo(user_id : Int): DomainUserInfo {
         val resData = NetworkModule1.getRetrofitService.getUserInfo(user_id)
             .body()?.Data
