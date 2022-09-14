@@ -51,4 +51,14 @@
         android:name="com.hsu_irlab.ecore.NickFragment"
         android:label="fragment_nick"
         tools:layout="@layout/fragment_nick" />
+    <fragment
+        android:id="@+id/followingFragment"
+        android:name="com.hsu_irlab.ecore.FollowingFragment"
+        android:label="fragment_following"
+        tools:layout="@layout/fragment_following" />
+    <fragment
+        android:id="@+id/followerFragment"
+        android:name="com.hsu_irlab.ecore.FollowerFragment"
+        android:label="fragment_follower"
+        tools:layout="@layout/fragment_follower" />
 </navigation>
