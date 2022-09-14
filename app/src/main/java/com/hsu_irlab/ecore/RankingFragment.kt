@@ -1,37 +1,22 @@
 package com.hsu_irlab.ecore
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
-import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
-import com.hsu_irlab.data.BuildConfig
 import com.hsu_irlab.ecore.databinding.FragmentRankingBinding
-import com.hsu_irlab.ecore.presentaion.viewmodel.ranking.FollowingRankingViewModel
-import com.hsu_irlab.ecore.presentaion.viewmodel.ranking.RankingViewModel
-import com.hsu_irlab.ecore.presentaion.viewmodel.ranking.WholeRankingViewModel
 import com.hsu_irlab.ecore.ranking.FollowingRankingFragment
 import com.hsu_irlab.ecore.ranking.WholeRankingFragment
-import kotlin.math.log
 
 class RankingFragment : Fragment() {
 
     private val binding by lazy { FragmentRankingBinding.inflate(layoutInflater) }
-    private val viewModel by lazy { ViewModelProvider(this,
-        RankingViewModel.Factory())[RankingViewModel::class.java] }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.lifecycleOwner=this
-        binding.viewmodel=viewModel
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

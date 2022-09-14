@@ -12,7 +12,7 @@ class RankingViewModel(private val repository: RankingRepositoryImpl) : ViewMode
     val myRanking: MutableLiveData<DomainRanking> get() = _myRanking
     fun getMyRanking(type:String){
         viewModelScope.launch {
-            _myRanking.value=repository.getRanking(type).filter { it.user_id== EcoreApp.prefs.user_id }.get(0)
+            _myRanking.value=repository.getRanking(type).filter { it.user_id == EcoreApp.prefs. }.get(0)
             Log.e("launch", "getMyRanking: ${_myRanking.value?.row_num}", )
         }
     }

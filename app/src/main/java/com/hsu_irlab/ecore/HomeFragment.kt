@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.hsu_irlab.ecore.databinding.FragmentHomeBinding
-import com.hsu_irlab.ecore.databinding.FragmentWholeRankingBinding
-import com.hsu_irlab.ecore.presentaion.adapter.RankingAdapter
 import com.hsu_irlab.ecore.presentaion.viewmodel.HomeViewModel
-import com.hsu_irlab.ecore.presentaion.viewmodel.RankingViewModel
 
 class HomeFragment : Fragment() {
     private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
