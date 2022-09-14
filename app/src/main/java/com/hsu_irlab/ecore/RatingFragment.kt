@@ -5,55 +5,52 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.hsu_irlab.ecore.databinding.FragmentBadgeBinding
+import com.hsu_irlab.ecore.databinding.FragmentDailyBinding
+import com.hsu_irlab.ecore.databinding.FragmentHomeBinding
+import com.hsu_irlab.ecore.databinding.FragmentRatingBinding
+import com.hsu_irlab.ecore.presentation.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RatingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class RatingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var binding : FragmentRatingBinding
+    private val mainModel : MainViewModel by activityViewModels()
+    private val args: RatingFragmentArgs by navArgs()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rating, container, false)
+        binding = FragmentRatingBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RatingFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RatingFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.tvReportTitle.text = args.title
+        binding.btnPass.setOnClickListener{
+            uploadFin()
+        }
+        binding.btnErr.setOnClickListener {
+            uploadFin()
+        }
     }
+
+    private fun uploadFin(){
+
+        Toast.makeText(requireContext(),"일일도전 참여가 완료 되었습니다.",1000).show()
+        findNavController().navigate(R.id.action_ratingFragment_to_homeFragment)
+        findNavController().popBackStack()
+    }
+
 }

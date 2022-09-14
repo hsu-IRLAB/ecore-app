@@ -15,6 +15,8 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.hsu_irlab.data.BuildConfig
@@ -36,6 +38,7 @@ class DailyFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainModel.pictureClear()
     }
 
     override fun onCreateView(
@@ -93,7 +96,10 @@ class DailyFragment : Fragment() {
                 .into(binding.ivDailyBad)
         }
         mainModel.img.observe(viewLifecycleOwner){
-            binding.ivDailyGood.setImageBitmap(it)
+            val action = DailyFragmentDirections.actionDailyFragmentToRatingFragment(
+                args.title)
+            findNavController().navigate(action)
+//            binding.ivDailyGood.setImageBitmap(it)
         }
     }
 

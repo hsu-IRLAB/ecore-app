@@ -52,6 +52,10 @@ class MainViewModel @Inject constructor(
         Log.e("dd", "picture: mainViemodel", )
         _img.postValue(bitmap)
     }
+
+    fun pictureClear(){
+        _img = MutableLiveData()
+    }
     fun login(){
         _isLogin.postValue(true)
     }

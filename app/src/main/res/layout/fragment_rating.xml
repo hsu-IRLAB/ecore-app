@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textView28"
+                android:id="@+id/tv_report_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -41,17 +41,18 @@
                 android:text="다른 사옹자가 업로드한 사진을 확인해 주세요\n도전에 적합하지 않은 사진이면 부적합 버튼을 통해서\n알려주세요!"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView28" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_report_title" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:id="@+id/iv_rating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+            app:srcCompat="@drawable/tmp_daily"
             tools:srcCompat="@tools:sample/avatars" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -65,7 +66,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button7"
+            android:id="@+id/btn_err"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_red"
