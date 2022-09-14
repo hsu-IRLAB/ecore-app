@@ -39,6 +39,10 @@ class DailyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnDailyStart.setOnClickListener {
+
+        }
     }
 
     private fun setObserver() {
