@@ -6,7 +6,13 @@ import com.hsu_irlab.domain.repository.RankingRepository
 class RankingUseCase(
     private val repository: RankingRepository
 ) {
-    suspend fun getRanking(type:String): List<DomainRanking>{
+    suspend fun getWholeRanking(): List<DomainRanking>{
+        return repository.getRanking("all")
+    }
+    suspend fun getFollowingRanking(): List<DomainRanking>{
+        return repository.getRanking("following")
+    }
+    suspend fun getMyRanking(type:String): List<DomainRanking>{
         return repository.getRanking(type)
     }
 }

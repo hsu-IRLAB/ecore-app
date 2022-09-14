@@ -58,28 +58,28 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.button.setOnClickListener {
-            signInGoogle()
+           // signInGoogle()
         }
     }
 
-    private fun signInGoogle(){
-        val googleSignInOptions = GoogleSignInOptions.Builder(
-            GoogleSignInOptions.DEFAULT_SIGN_IN
-        ).requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        val googleSignInClient = GoogleSignIn.getClient(requireActivity() , googleSignInOptions)
-        val signInIntent = googleSignInClient.signInIntent
-        launcher.launch(signInIntent)
-    }
-    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result ->
-        Log.e("TAG", ": $result", )
-        if (result.resultCode == Activity.RESULT_OK){
-            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-            handleResults(task)
-        }
-    }
+//    private fun signInGoogle(){
+//        val googleSignInOptions = GoogleSignInOptions.Builder(
+//            GoogleSignInOptions.DEFAULT_SIGN_IN
+//        ).requestIdToken(getString(R.string.default_web_client_id))
+//            .requestEmail()
+//            .build()
+//        val googleSignInClient = GoogleSignIn.getClient(requireActivity() , googleSignInOptions)
+//        val signInIntent = googleSignInClient.signInIntent
+//        launcher.launch(signInIntent)
+//    }
+//    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+//            result ->
+//        Log.e("TAG", ": $result", )
+//        if (result.resultCode == Activity.RESULT_OK){
+//            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+//            handleResults(task)
+//        }
+//    }
 
     private fun handleResults(task: Task<GoogleSignInAccount>) {
         if (task.isSuccessful){

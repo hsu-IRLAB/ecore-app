@@ -8,19 +8,19 @@ data class RankingDto(
 )
 
 data class Ranking(
-    val row_num:String,
-    val user_id: Int,
+    val row_num: Int,
     val name: String,
-    val total_score: String,
-    val profile_picture: String
-){
+    val total_score: Int,
+    val profile_img: String,
+    val user_id: Int,
+) {
     fun toDomainRanking(): DomainRanking {
         return DomainRanking(
-            row_num=row_num,
-            user_id=user_id,
-            name=name,
-            total_score=total_score,
-            profile_picture=profile_picture,
+            row_num = row_num,
+            name = name,
+            total_score = total_score,
+            profile_img = profile_img,
+            user_id = user_id,
         )
     }
 }

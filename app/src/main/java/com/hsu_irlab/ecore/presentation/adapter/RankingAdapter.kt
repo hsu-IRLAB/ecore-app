@@ -33,29 +33,23 @@ class RankingAdapter :RecyclerView.Adapter<RankingAdapter.ViewHolder>(){
         fun setItem(item: DomainRanking){
             binding.tvRankingName.text =  item.name
             binding.tvRankingScore.text =  dec.format(item.total_score.toInt())
-            //binding.tvRankingGrade.text = "${adapterPosition+1}."
-            binding.tvRankingGrade.text = item.row_num+"."
+            binding.tvRankingGrade.text = item.row_num.toString()+"."
             when(binding.tvRankingGrade.text){
                 "1." -> binding.tvRankingGrade.setTextColor(Color.parseColor("#FFBD1B"))
                 "2." -> binding.tvRankingGrade.setTextColor(Color.parseColor("#C0C0C0"))
                 "3." -> binding.tvRankingGrade.setTextColor(Color.parseColor("#BF8970"))
             }
             Glide.with(itemView)
-                .load("${BuildConfig.BASE_URL}/upload/${item.profile_picture}")
+                .load("${BuildConfig.BASE_URL}/upload/${item.profile_img}")
                 .circleCrop()
                 .into(binding.ivProfile)
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    internal fun setData(newItems: List<DomainRanking>) {
+    fun setData(newItems: List<DomainRanking>) {
         this.items = newItems
         notifyDataSetChanged()
-    }
-
-    //뭐임
-    override fun getItemViewType(position: Int): Int {
-        return position
     }
 
 

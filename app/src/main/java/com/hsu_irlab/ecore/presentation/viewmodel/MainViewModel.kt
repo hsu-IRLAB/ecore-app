@@ -30,7 +30,7 @@ class MainViewModel @Inject constructor(
 
     init {
         //TODO jwt바꾸는 부분
-        prefs.jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVU0VSX0lEIjo5LCJOQU1FIjoi6rmA7LCs7Z2sIiwiaWF0IjoxNjYzMDgwMTIwLCJleHAiOjE2ODkwMDAxMjAsImlzcyI6IkVDT1JFIn0.EDe4wa7TwsDB-y629HHI-SZf1RSLvw5Ip8fxmwGOyzA"
+        prefs.jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVU0VSX0lEIjo4LCJOQU1FIjoi6rmA6rK97Zi4IiwiaWF0IjoxNjYzMDgwMDczLCJleHAiOjE2ODkwMDAwNzMsImlzcyI6IkVDT1JFIn0.qtQTZFiWUTdSpB6NTY13ryLrtEi5zB_0yeU9EoMANDo"
         val jwt = JWT(prefs.jwt)
         val user_id = jwt.getClaim("USER_ID").asInt()
         if (user_id != null) {
