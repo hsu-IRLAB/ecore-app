@@ -66,5 +66,13 @@
         <argument
             android:name="reward"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_dailyFragment_to_ratingFragment"
+            app:destination="@id/ratingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/ratingFragment"
+        android:name="com.hsu_irlab.ecore.RatingFragment"
+        android:label="fragment_rating"
+        tools:layout="@layout/fragment_rating" />
 </navigation>
