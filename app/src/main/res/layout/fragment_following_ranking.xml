@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.hsu_irlab.ecore.presentation.viewmodel.ranking.FollowingRankingViewModel" />
+            type="com.hsu_irlab.ecore.presentation.viewmodel.ranking.RankingViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

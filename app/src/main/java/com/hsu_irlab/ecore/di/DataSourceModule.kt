@@ -3,8 +3,10 @@ package com.hsu_irlab.ecore.di
 import com.hsu_irlab.data.remote.dataSourceImpl.BadgeDataSourceImpl
 import com.hsu_irlab.data.remote.dataSource.BadgeDataSource
 import com.hsu_irlab.data.remote.dataSource.DailyDataSource
+import com.hsu_irlab.data.remote.dataSource.RankingDataSource
 import com.hsu_irlab.data.remote.dataSource.UserDataSource
 import com.hsu_irlab.data.remote.dataSourceImpl.DailyDataSourceImpl
+import com.hsu_irlab.data.remote.dataSourceImpl.RankingDataSourceImpl
 import com.hsu_irlab.data.remote.dataSourceImpl.UserDataSourceImpl
 import dagger.Module
 import dagger.Provides
@@ -38,6 +40,14 @@ object DataSourceModule {
     ): DailyDataSource {
         return DailyDataSourceImpl(retrofit)
     }
+    @Provides
+    @Singleton
+    fun provideRankingDataSource(
+        retrofit: Retrofit
+    ): RankingDataSource {
+        return RankingDataSourceImpl(retrofit)
+    }
+
 
 
 }

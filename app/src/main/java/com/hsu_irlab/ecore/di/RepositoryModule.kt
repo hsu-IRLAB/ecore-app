@@ -2,12 +2,15 @@ package com.hsu_irlab.ecore.di
 
 import com.hsu_irlab.data.remote.dataSource.BadgeDataSource
 import com.hsu_irlab.data.remote.dataSource.DailyDataSource
+import com.hsu_irlab.data.remote.dataSource.RankingDataSource
 import com.hsu_irlab.data.remote.dataSource.UserDataSource
 import com.hsu_irlab.data.repository.BadgeRepositoryImpl
 import com.hsu_irlab.data.repository.DailyRepositoryImpl
+import com.hsu_irlab.data.repository.RankingRepositoryImpl
 import com.hsu_irlab.data.repository.UserRepositoryImpl
 import com.hsu_irlab.domain.repository.BadgeRepository
 import com.hsu_irlab.domain.repository.DailyRepository
+import com.hsu_irlab.domain.repository.RankingRepository
 import com.hsu_irlab.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
@@ -40,5 +43,13 @@ object RepositoryModule {
         api: DailyDataSource
     ):DailyRepository{
         return DailyRepositoryImpl(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRankingRepository(
+        api: RankingDataSource
+    ):RankingRepository{
+        return RankingRepositoryImpl(api)
     }
 }

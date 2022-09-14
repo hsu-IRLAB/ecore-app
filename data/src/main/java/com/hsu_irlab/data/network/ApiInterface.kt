@@ -1,6 +1,6 @@
 package com.hsu_irlab.data.network
 
-import com.hsu_irlab.data.response.ranking.RakingResponse
+import com.hsu_irlab.data.remote.dto.RankingDto
 import com.hsu_irlab.data.response.userinfo.UserInfoResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -11,7 +11,7 @@ interface ApiInterface {
     suspend fun getRanking(
         @Query("type")
         type : String
-    ): Response<RakingResponse>
+    ): Response<RankingDto>
 
     @GET("/user/info")
     suspend fun getUserInfo(

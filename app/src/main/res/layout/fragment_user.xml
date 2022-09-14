@@ -12,8 +12,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_user"
         tools:context=".UserFragment">
-
-
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="16dp"

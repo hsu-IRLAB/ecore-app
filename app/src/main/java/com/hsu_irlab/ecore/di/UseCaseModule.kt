@@ -2,9 +2,11 @@ package com.hsu_irlab.ecore.di
 
 import com.hsu_irlab.domain.repository.BadgeRepository
 import com.hsu_irlab.domain.repository.DailyRepository
+import com.hsu_irlab.domain.repository.RankingRepository
 import com.hsu_irlab.domain.repository.UserRepository
 import com.hsu_irlab.domain.use_case.BadgeUseCase
 import com.hsu_irlab.domain.use_case.DailyUseCase
+import com.hsu_irlab.domain.use_case.RankingUseCase
 import com.hsu_irlab.domain.use_case.UserUseCase
 import dagger.Module
 import dagger.Provides
@@ -32,6 +34,12 @@ object UseCaseModule {
     @Singleton
     fun provideDailyUseCase(repository: DailyRepository):DailyUseCase{
         return DailyUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRankingUseCase(repository: RankingRepository):RankingUseCase{
+        return RankingUseCase(repository)
     }
 
 }
