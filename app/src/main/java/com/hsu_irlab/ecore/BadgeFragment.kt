@@ -41,7 +41,6 @@ class BadgeFragment : Fragment() {
 
     private fun setObserver() {
         model.itemList.observe(viewLifecycleOwner) {
-            Log.e("d", "setObserver: $it", )
             adapter.setData(it)
         }
     }
