@@ -32,7 +32,7 @@ class UserFragment : Fragment() {
         binding.tvName.text = userInfo!!.name
         */
         setObserver()
-        binding.tvBadgeAll.setOnClickListener {
+        binding.ivBadgeAll.setOnClickListener {
             findNavController().navigate(R.id.action_userFragment_to_badgeFragment)
         }
 
@@ -42,6 +42,13 @@ class UserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnChangeNickName.setOnClickListener{
+
+        }
+
+        binding.btnChangePhoto.setOnClickListener{
+
+        }
     }
 
     private fun setObserver() {

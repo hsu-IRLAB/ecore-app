@@ -12,6 +12,17 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_user"
         tools:context=".UserFragment">
+
+        <ImageView
+            android:id="@+id/iv_badge_all"
+            android:layout_width="16dp"
+            android:layout_height="19dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/ic_baseline_arrow_forward_"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_badge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_badge" />
+
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="16dp"
@@ -34,10 +45,9 @@
             android:id="@+id/imageView7"
             android:layout_width="16dp"
             android:layout_height="19dp"
-            android:layout_marginEnd="10dp"
             android:src="@drawable/ic_baseline_arrow_forward_"
             app:layout_constraintBottom_toBottomOf="@+id/textView11"
-            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="@+id/iv_badge_all"
             app:layout_constraintTop_toTopOf="@+id/textView11" />
 
         <View
@@ -72,6 +82,7 @@
             android:textColor="@color/black"
             android:textSize="30dp"
             android:textStyle="bold"
+            tools:text="닉네임"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,11 +104,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
             android:textColor="@color/black"
             android:textSize="27sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_myecore"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="50" />
 
         <TextView
             android:id="@+id/tv_following"
@@ -130,6 +144,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="16sp"
+            tools:text="42"
             app:layout_constraintEnd_toStartOf="@+id/view3"
             app:layout_constraintHorizontal_bias="0.458"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,6 +156,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="16sp"
+            tools:text="32"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toEndOf="@+id/view3"
@@ -150,39 +166,11 @@
             android:id="@+id/tv_badge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="48dp"
+            android:layout_marginTop="32dp"
             android:text="배지"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/view2"
-            app:layout_constraintStart_toStartOf="@+id/view2"
             app:layout_constraintTop_toBottomOf="@+id/tv_following_value"
-            app:layout_constraintVertical_bias="0.696" />
-
-        <TextView
-            android:id="@+id/tv_badge_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="전체보기"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_badge"
-            app:layout_constraintEnd_toEndOf="@+id/view2" />
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="124dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/beige"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
+            tools:layout_editor_absoluteX="28dp" />
 
         <TextView
             android:id="@+id/textView12"
@@ -218,12 +206,11 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="23dp"
             android:text="완료한 도전"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_badge"
+            tools:layout_editor_absoluteX="28dp" />
 
         <Button
             android:id="@+id/button2"
@@ -312,6 +299,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginTop="64dp"
@@ -329,6 +317,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_change_photo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:backgroundTint="#FFFFFF"
+            android:clickable="true"
+            app:borderWidth="0dp"
+            app:fabCustomSize="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+            app:srcCompat="@drawable/ic_cam" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_change_nick_name"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#FFFFFF"
+            android:clickable="true"
+            app:borderWidth="0dp"
+            app:fabCustomSize="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_name"
+            app:srcCompat="@drawable/ic_pencil" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
