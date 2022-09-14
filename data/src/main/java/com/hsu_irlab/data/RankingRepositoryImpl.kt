@@ -8,8 +8,8 @@ import com.hsu_irlab.domain.repository.RankingRepository
 
 
 class RankingRepositoryImpl() :RankingRepository {
-    override suspend fun getRanking(): List<DomainRanking> {
-        return NetworkModule.getRetrofitService.getRanking()
+    override suspend fun getRanking(type:String): List<DomainRanking> {
+        return NetworkModule.getRetrofitService.getRanking(type)
             .body()?.data?.map { it.toDomainRanking() } ?: ArrayList() // 값 돌아와서 null 아니면 domain ranking 으로 바꿔서 리턴 null
     }
     companion object {

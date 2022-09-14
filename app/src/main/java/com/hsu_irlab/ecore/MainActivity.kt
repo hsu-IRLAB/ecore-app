@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.activity_main_navi)
         //임시로 토큰넣
-        EcoreApp.prefs.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVU0VSX0lEIjo5OSwiTkFNRSI6IuydtOujqOyWtOyniCDqv4giLCJpYXQiOjE2NjA3MTI5NjQsImV4cCI6MTY4NjYzMjk2NCwiaXNzIjoiRUNPUkUifQ.sH3EakG1ltRMi9MwiF0n35LOqNGk72pgkSojFqXzHvk"
-
+        EcoreApp.prefs.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVU0VSX0lEIjo4NiwiTkFNRSI6Im5hbmFuYW1lIiwiaWF0IjoxNjYwMTExODc1LCJleHAiOjE2ODYwMzE4NzUsImlzcyI6IkVDT1JFIn0.1lhRXwjfir76goRLAJOJlHdxzBbquQzaAwq7WvsCJQY"
+        EcoreApp.prefs.user_id=86
 
         setupWithNavController(bottomNavigationView,navController)
     }

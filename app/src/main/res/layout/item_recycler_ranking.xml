@@ -18,7 +18,7 @@
             android:id="@+id/tv_ranking_grade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:text="300."
             android:textColor="@color/green_400"
             android:textSize="24sp"
@@ -69,10 +69,10 @@
             android:id="@+id/iv_profile"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="45dp"
             android:foregroundGravity="center"
             app:layout_constraintBottom_toBottomOf="@+id/tv_ranking_grade"
-            app:layout_constraintStart_toEndOf="@+id/tv_ranking_grade"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_ranking_grade"
             tools:srcCompat="@tools:sample/avatars" />
 

@@ -11,8 +11,11 @@ import retrofit2.http.*
 
 
 interface ApiInterface {
-    @GET("/ranking")
-    suspend fun getRanking(): Response<RakingResponse>
+    @GET("/rank")
+    suspend fun getRanking(
+        @Query("type")
+        type : String
+    ): Response<RakingResponse>
 
     @GET("/user/info")
     suspend fun getUserInfo(
