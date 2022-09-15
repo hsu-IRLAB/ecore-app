@@ -50,6 +50,23 @@ object DataSourceModule {
     ):FollowDataSource{
         return FollowDataSourceImpl(retrofit)
     }
+    @Provides
+    @Singleton
+    fun provideCampaignDataSource(
+        retrofit: Retrofit
+    ):CampaignDataSource{
+        return CampaignDataSourceImpl(retrofit)
+    }
+
+    @Provides
+    @Singleton
+    fun provideChallengeDataSource(
+        retrofit: Retrofit
+    ):ChallengeDataSource{
+        return ChallengeDataSourceImpl(retrofit)
+    }
+
+
 
 
 

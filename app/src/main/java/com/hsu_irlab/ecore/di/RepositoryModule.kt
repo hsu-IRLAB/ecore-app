@@ -1,6 +1,7 @@
 package com.hsu_irlab.ecore.di
 
 import com.hsu_irlab.data.remote.dataSource.*
+import com.hsu_irlab.data.remote.dataSourceImpl.ChallengeDataSourceImpl
 import com.hsu_irlab.data.repository.*
 import com.hsu_irlab.domain.repository.*
 import dagger.Module
@@ -51,4 +52,19 @@ object RepositoryModule {
     ):FollowRepository{
         return FollowRepositoryImpl(api)
     }
+    @Provides
+    @Singleton
+    fun provideCampaignRepository(
+        api: CampaignDataSource
+    ):CampaignRepository{
+        return CampaignRepositoryImpl(api)
+    }
+    @Provides
+    @Singleton
+    fun provideChallengeRepository(
+        api: ChallengeDataSourceImpl
+    ):ChallengeRepository{
+        return ChallengeRepositoryImpl(api)
+    }
+
 }
