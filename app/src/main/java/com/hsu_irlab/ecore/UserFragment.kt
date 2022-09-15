@@ -41,6 +41,11 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvFollowingValue.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_followingFragment)  }
+        binding.tvFollowing.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_followingFragment) }
+
+        binding.tvFollower.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_followerFragment) }
+        binding.tvFollowerValue.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_followerFragment) }
 
     }
 

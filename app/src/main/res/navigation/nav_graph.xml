@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_challenge" />
     <fragment
         android:id="@+id/rankingFragment"
-        android:name="com.hsu_irlab.ecore.RankingFragment"
+        android:name="com.hsu_irlab.ecore.ranking.RankingFragment"
         android:label="fragment_ranking"
         tools:layout="@layout/fragment_ranking" />
     <fragment
@@ -28,6 +28,12 @@
         <action
             android:id="@+id/action_userFragment_to_badgeFragment"
             app:destination="@id/badgeFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_followerFragment"
+            app:destination="@id/followerFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_followingFragment"
+            app:destination="@id/followingFragment" />
     </fragment>
     <fragment
         android:id="@+id/badgeFragment"

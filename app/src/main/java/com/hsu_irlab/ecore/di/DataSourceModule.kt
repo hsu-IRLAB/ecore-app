@@ -1,13 +1,8 @@
 package com.hsu_irlab.ecore.di
 
-import com.hsu_irlab.data.remote.dataSourceImpl.BadgeDataSourceImpl
-import com.hsu_irlab.data.remote.dataSource.BadgeDataSource
-import com.hsu_irlab.data.remote.dataSource.DailyDataSource
-import com.hsu_irlab.data.remote.dataSource.RankingDataSource
-import com.hsu_irlab.data.remote.dataSource.UserDataSource
-import com.hsu_irlab.data.remote.dataSourceImpl.DailyDataSourceImpl
-import com.hsu_irlab.data.remote.dataSourceImpl.RankingDataSourceImpl
-import com.hsu_irlab.data.remote.dataSourceImpl.UserDataSourceImpl
+import com.hsu_irlab.data.remote.dataSource.*
+import com.hsu_irlab.data.remote.dataSourceImpl.*
+import com.hsu_irlab.data.repository.FollowRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,6 +41,14 @@ object DataSourceModule {
         retrofit: Retrofit
     ): RankingDataSource {
         return RankingDataSourceImpl(retrofit)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFollowDataSource(
+        retrofit: Retrofit
+    ):FollowDataSource{
+        return FollowDataSourceImpl(retrofit)
     }
 
 

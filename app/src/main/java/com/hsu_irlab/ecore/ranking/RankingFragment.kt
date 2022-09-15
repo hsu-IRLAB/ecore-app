@@ -1,4 +1,4 @@
-package com.hsu_irlab.ecore
+package com.hsu_irlab.ecore.ranking
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
