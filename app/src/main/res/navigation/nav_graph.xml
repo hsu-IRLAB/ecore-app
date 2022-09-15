@@ -38,12 +38,20 @@
         <action
             android:id="@+id/action_userFragment_to_followingFragment"
             app:destination="@id/followingFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_changeNickNameDialogFragment"
+            app:destination="@id/changeNickNameDialogFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/badgeFragment"
         android:name="com.hsu_irlab.ecore.BadgeFragment"
         android:label="fragment_badge"
-        tools:layout="@layout/fragment_badge" />
+        tools:layout="@layout/fragment_badge" >
+        <action
+            android:id="@+id/action_badgeFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.hsu_irlab.ecore.LoginFragment"
@@ -100,4 +108,8 @@
             app:popUpTo="@id/homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/changeNickNameDialogFragment"
+        android:name="com.hsu_irlab.ecore.ChangeNickNameDialogFragment"
+        android:label="ChangeNickNameDialogFragment" />
 </navigation>
