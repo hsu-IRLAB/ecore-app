@@ -41,6 +41,11 @@ object UseCaseModule {
     fun provideFollowUseCase(repository: FollowRepository):FollowUseCase{
         return FollowUseCase(repository)
     }
+    @Provides
+    @Singleton
+    fun provideCampaignUseCase(repository: CampaignRepository):CampaignUseCase{
+        return CampaignUseCase(repository)
+    }
 
     @Provides
     @Singleton
@@ -48,4 +53,7 @@ object UseCaseModule {
         return CommonUseCase(repository)
     }
 
+    fun provideChallengeUseCase(repository: ChallengeRepository):ChallengeUseCase{
+        return ChallengeUseCase(repository)
+    }
 }

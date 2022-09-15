@@ -83,6 +83,4 @@ class RankingFragment : Fragment() {
         }
 
     }
-
-
 }

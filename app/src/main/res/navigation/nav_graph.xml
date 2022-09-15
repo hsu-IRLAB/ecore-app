@@ -16,9 +16,13 @@
     </fragment>
     <fragment
         android:id="@+id/challengeFragment"
-        android:name="com.hsu_irlab.ecore.ChallengeFragment"
+        android:name="com.hsu_irlab.ecore.challenge.ChallengeFragment"
         android:label="fragment_challenge"
-        tools:layout="@layout/fragment_challenge" />
+        tools:layout="@layout/fragment_challenge" >
+        <action
+            android:id="@+id/action_challengeFragment_to_campaginDetailFragment"
+            app:destination="@id/campaginDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/rankingFragment"
         android:name="com.hsu_irlab.ecore.ranking.RankingFragment"
@@ -170,4 +174,13 @@
         android:name="com.hsu_irlab.ecore.ProfileCampaignFragment"
         android:label="fragment_profile_campaign"
         tools:layout="@layout/fragment_profile_campaign" />
+    <fragment
+        android:id="@+id/campaginDetailFragment"
+        android:name="com.hsu_irlab.ecore.CampaignDetailFragment"
+        android:label="fragment_campagin_detail"
+        tools:layout="@layout/fragment_campagin_detail" >
+        <argument
+            android:name="data"
+            app:argType="com.hsu_irlab.domain.model.DomainCampaign" />
+    </fragment>
 </navigation>

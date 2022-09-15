@@ -1,6 +1,7 @@
 package com.hsu_irlab.ecore.di
 
 import com.hsu_irlab.data.remote.dataSource.*
+import com.hsu_irlab.data.remote.dataSourceImpl.ChallengeDataSourceImpl
 import com.hsu_irlab.data.repository.*
 import com.hsu_irlab.domain.repository.*
 import dagger.Module
@@ -16,7 +17,7 @@ object RepositoryModule {
     @Singleton
     fun provideBadgeRepository(
         api: BadgeDataSource
-    ):BadgeRepository{
+    ): BadgeRepository {
         return BadgeRepositoryImpl(api)
     }
 
@@ -24,7 +25,7 @@ object RepositoryModule {
     @Singleton
     fun provideUserRepository(
         api: UserDataSource
-    ):UserRepository{
+    ): UserRepository {
         return UserRepositoryImpl(api)
     }
 
@@ -32,7 +33,7 @@ object RepositoryModule {
     @Singleton
     fun provideDailyRepository(
         api: DailyDataSource
-    ):DailyRepository{
+    ): DailyRepository {
         return DailyRepositoryImpl(api)
     }
 
@@ -40,7 +41,7 @@ object RepositoryModule {
     @Singleton
     fun provideRankingRepository(
         api: RankingDataSource
-    ):RankingRepository{
+    ): RankingRepository {
         return RankingRepositoryImpl(api)
     }
 
@@ -48,7 +49,7 @@ object RepositoryModule {
     @Singleton
     fun provideFollowRepository(
         api: FollowDataSource
-    ):FollowRepository{
+    ): FollowRepository {
         return FollowRepositoryImpl(api)
     }
 
@@ -56,8 +57,24 @@ object RepositoryModule {
     @Singleton
     fun provideCommonRepository(
         api: CommonDataSource
-    ):CommonRepository{
+    ): CommonRepository {
         return CommonRepositoryImpl(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCampaignRepository(
+        api: CampaignDataSource
+    ): CampaignRepository {
+        return CampaignRepositoryImpl(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideChallengeRepository(
+        api: ChallengeDataSourceImpl
+    ): ChallengeRepository {
+        return ChallengeRepositoryImpl(api)
     }
 
 }
