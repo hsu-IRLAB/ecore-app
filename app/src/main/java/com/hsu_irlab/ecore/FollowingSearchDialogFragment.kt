@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.hsu_irlab.data.BuildConfig
 import com.hsu_irlab.ecore.databinding.FragmentFollowingBinding
 import com.hsu_irlab.ecore.databinding.FragmentFollowingSearchDialogBinding
+import com.hsu_irlab.ecore.presentation.viewmodel.MainViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.follow.FollowingSearchDialogViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.follow.FollowingViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FollowingSearchDialogFragment : DialogFragment() {
     lateinit var binding: FragmentFollowingSearchDialogBinding
     private val viewModel: FollowingSearchDialogViewModel by viewModels()
+    private val mainModel : MainViewModel by activityViewModels()
     override fun onStart() {
         super.onStart()
         if(dialog != null && activity !=null && isAdded){
@@ -28,6 +31,10 @@ class FollowingSearchDialogFragment : DialogFragment() {
             dialog?.window?.setLayout(fullWidth.toInt(),ViewGroup.LayoutParams.WRAP_CONTENT)
             //dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
+    }
+    override fun dismiss() {
+        super.dismiss()
+        mainModel.getUserInfo(viewModel.id)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
