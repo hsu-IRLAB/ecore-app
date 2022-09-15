@@ -9,10 +9,12 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/badgeLayout"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_margin="10dp"
         android:background="@drawable/bg_badge_item"
+        android:backgroundTint="#D3D3D3"
         android:padding="10dp">
 
         <TextView

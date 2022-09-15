@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hsu_irlab.domain.model.DomainBadge
+import com.hsu_irlab.ecore.R
 import com.hsu_irlab.ecore.databinding.ItemRecyclerBadgeBinding
 
 class BadgeAdapter : RecyclerView.Adapter<BadgeAdapter.ViewHolder>() {
@@ -25,6 +26,11 @@ class BadgeAdapter : RecyclerView.Adapter<BadgeAdapter.ViewHolder>() {
             Log.e("TAG", "setItem: $item", )
             binding.tvBadgeTitle.text = item.title
             binding.tvBadgeDetail.text = item.detail
+
+            if(item.badge_date == null)
+                binding.badgeLayout.setBackgroundTint(binding.root.resources.getColor(R.color.gray_100))
+            else
+                binding.badgeLayout.setBackgroundColor(binding.root.resources.getColor(R.color.green_100))
         }
     }
 
