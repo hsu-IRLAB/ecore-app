@@ -102,6 +102,11 @@ dependencies {
     //google auth
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
 
+    //TedPermission
+    def ted_version="3.3.0"
+    implementation "io.github.ParkSangGwon:tedpermission-normal:$ted_version"
+    implementation "io.github.ParkSangGwon:tedpermission-coroutine:$ted_version"
+
 
 
     //jwt

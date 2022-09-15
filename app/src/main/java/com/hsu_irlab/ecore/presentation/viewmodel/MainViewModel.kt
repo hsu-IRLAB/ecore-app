@@ -56,14 +56,15 @@ class MainViewModel @Inject constructor(
     fun pictureClear(){
         _img = MutableLiveData()
     }
+
     fun login(){
         _isLogin.postValue(true)
     }
+
     fun getUserInfo(user_id:Int){
         viewModelScope.launch {
             _userInfo.postValue(userUseCase.getUserInfo(user_id))
         }
     }
-
-
+    
 }

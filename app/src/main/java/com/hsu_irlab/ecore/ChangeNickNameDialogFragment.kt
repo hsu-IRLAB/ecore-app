@@ -1,14 +1,16 @@
 package com.hsu_irlab.ecore
 
+import android.app.Activity
 import android.app.Dialog
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.DisplayMetrics
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
@@ -33,10 +35,17 @@ class ChangeNickNameDialogFragment : DialogFragment() {
         super.onCreate(savedInstanceState)
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (dialog != null && activity != null && isAdded) {
+            val fullWidth = getScreenWidth(requireActivity()) * .8
+            dialog?.window?.setLayout(fullWidth.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+        }
+    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        dialog.setCancelable(false)
         return dialog
     }
 
@@ -95,7 +104,6 @@ class ChangeNickNameDialogFragment : DialogFragment() {
         changeNickNameDialogViewModel.changeName.observe(viewLifecycleOwner){
             changeNickNameDialogViewModel.changeName.value?.let {
                 if(it.Message == "성공"){
-
                     Toast.makeText(requireContext(),"닉네임 변경에 성공하였습니다.",1000).show()
                     dismiss()
                 }
@@ -103,6 +111,21 @@ class ChangeNickNameDialogFragment : DialogFragment() {
                     Toast.makeText(requireContext(),"닉네임 변경에 실패하였습니다.",1000).show()
                 }
             }
+        }
+    }
+
+    //TODO 병합하면 경호선배가 추가했을 Util에서 가져오
+    fun getScreenWidth(activity: Activity): Int {
+        val windowManager = activity.applicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+            val windowMetrics = windowManager.currentWindowMetrics
+            val insets = windowMetrics.windowInsets
+                .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+            windowMetrics.bounds.width() - insets.left - insets.right
+        }else{
+            val displayMetrics = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(displayMetrics)
+            displayMetrics.widthPixels
         }
     }
 

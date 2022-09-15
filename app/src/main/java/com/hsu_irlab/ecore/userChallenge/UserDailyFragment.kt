@@ -1,13 +1,14 @@
-package com.hsu_irlab.ecore
+package com.hsu_irlab.ecore.userChallenge
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hsu_irlab.ecore.R
 
-class UserChallengeFragment : Fragment() {
 
+class UserDailyFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +19,8 @@ class UserChallengeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_user_challenge, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_user_daily, container, false)
     }
 
 }

@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_userFragment_to_changeNickNameDialogFragment"
             app:destination="@id/changeNickNameDialogFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_userChallengeFragment"
+            app:destination="@id/userChallengeFragment" />
 
     </fragment>
     <fragment
@@ -112,4 +115,12 @@
         android:id="@+id/changeNickNameDialogFragment"
         android:name="com.hsu_irlab.ecore.ChangeNickNameDialogFragment"
         android:label="ChangeNickNameDialogFragment" />
+    <fragment
+        android:id="@+id/userChallengeFragment"
+        android:name="com.hsu_irlab.ecore.userChallenge.UserChallengeFragment"
+        android:label="UserChallengeFragment" >
+        <action
+            android:id="@+id/action_userChallengeFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
 </navigation>

@@ -47,9 +47,9 @@ class UserFragment : Fragment() {
         binding.tvFollower.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_followerFragment) }
         binding.tvFollowerValue.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_followerFragment) }
 
-        binding.btnChangeNickName.setOnClickListener{
-            findNavController().navigate(R.id.action_userFragment_to_changeNickNameDialogFragment)
-        }
+        binding.btnChangeNickName.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_changeNickNameDialogFragment) }
+
+        binding.ivUserChallenge.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_userChallengeFragment) }
 
         binding.btnChangePhoto.setOnClickListener{
 
