@@ -45,6 +45,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setObserver()
 
+        binding.btnToDaily.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToDailyFragment(
+                model.dailyData.title,model.dailyData.daily_reward)
+
+            findNavController().navigate(action)
+
+        }
+
     }
 
 //    private fun setView(){

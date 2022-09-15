@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.hsu_irlab.ecore.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_dailyFragment"
+            app:destination="@id/dailyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/challengeFragment"
         android:name="com.hsu_irlab.ecore.ChallengeFragment"
@@ -17,7 +21,7 @@
         tools:layout="@layout/fragment_challenge" />
     <fragment
         android:id="@+id/rankingFragment"
-        android:name="com.hsu_irlab.ecore.RankingFragment"
+        android:name="com.hsu_irlab.ecore.ranking.RankingFragment"
         android:label="fragment_ranking"
         tools:layout="@layout/fragment_ranking" />
     <fragment
@@ -29,8 +33,15 @@
             android:id="@+id/action_userFragment_to_badgeFragment"
             app:destination="@id/badgeFragment" />
         <action
+            android:id="@+id/action_userFragment_to_followerFragment"
+            app:destination="@id/followerFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_followingFragment"
+            app:destination="@id/followingFragment" />
+        <action
             android:id="@+id/action_userFragment_to_changeNickNameDialogFragment"
             app:destination="@id/changeNickNameDialogFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/badgeFragment"
@@ -58,6 +69,45 @@
         android:name="com.hsu_irlab.ecore.NickFragment"
         android:label="fragment_nick"
         tools:layout="@layout/fragment_nick" />
+    <fragment
+
+        android:id="@+id/followingFragment"
+        android:name="com.hsu_irlab.ecore.FollowingFragment"
+        android:label="fragment_following"
+        tools:layout="@layout/fragment_following" />
+    <fragment
+        android:id="@+id/followerFragment"
+        android:name="com.hsu_irlab.ecore.FollowerFragment"
+        android:label="fragment_follower"
+        tools:layout="@layout/fragment_follower" />
+    <fragment
+        android:id="@+id/dailyFragment"
+        android:name="com.hsu_irlab.ecore.DailyFragment"
+        android:label="fragment_daily"
+        tools:layout="@layout/fragment_daily" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="reward"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_dailyFragment_to_ratingFragment"
+            app:destination="@id/ratingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ratingFragment"
+        android:name="com.hsu_irlab.ecore.RatingFragment"
+        android:label="fragment_rating"
+        tools:layout="@layout/fragment_rating" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_ratingFragment_to_homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <dialog
         android:id="@+id/changeNickNameDialogFragment"
         android:name="com.hsu_irlab.ecore.ChangeNickNameDialogFragment"
