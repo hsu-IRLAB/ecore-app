@@ -6,9 +6,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00000000">
+        android:background="@android:color/transparent">
 
-        <!--
+
         <View
             android:layout_width="match_parent"
             android:layout_height="23dp"
@@ -16,9 +16,10 @@
             android:layout_marginTop="60dp"
             android:background="@drawable/bg_shadow"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"></View> -->
+            app:layout_constraintTop_toTopOf="parent"></View>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/constraintLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

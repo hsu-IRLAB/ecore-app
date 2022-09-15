@@ -32,7 +32,7 @@ class UserFragment : Fragment() {
         binding.tvName.text = userInfo!!.name
         */
         setObserver()
-        binding.tvBadgeAll.setOnClickListener {
+        binding.ivBadgeAll.setOnClickListener {
             findNavController().navigate(R.id.action_userFragment_to_badgeFragment)
         }
 
@@ -47,6 +47,13 @@ class UserFragment : Fragment() {
         binding.tvFollower.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_followerFragment) }
         binding.tvFollowerValue.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_followerFragment) }
 
+        binding.btnChangeNickName.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_changeNickNameDialogFragment) }
+
+        binding.ivUserChallenge.setOnClickListener { findNavController().navigate(R.id.action_userFragment_to_userChallengeFragment) }
+
+        binding.btnChangePhoto.setOnClickListener{
+
+        }
     }
 
     private fun setObserver() {

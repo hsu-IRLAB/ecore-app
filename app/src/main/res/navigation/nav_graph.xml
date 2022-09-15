@@ -38,12 +38,23 @@
         <action
             android:id="@+id/action_userFragment_to_followingFragment"
             app:destination="@id/followingFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_changeNickNameDialogFragment"
+            app:destination="@id/changeNickNameDialogFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_userChallengeFragment"
+            app:destination="@id/userChallengeFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/badgeFragment"
         android:name="com.hsu_irlab.ecore.BadgeFragment"
         android:label="fragment_badge"
-        tools:layout="@layout/fragment_badge" />
+        tools:layout="@layout/fragment_badge" >
+        <action
+            android:id="@+id/action_badgeFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.hsu_irlab.ecore.LoginFragment"
@@ -66,7 +77,11 @@
         android:id="@+id/followingFragment"
         android:name="com.hsu_irlab.ecore.FollowingFragment"
         android:label="fragment_following"
-        tools:layout="@layout/fragment_following" />
+        tools:layout="@layout/fragment_following" >
+        <action
+            android:id="@+id/action_followingFragment_to_followingSearchDialogFragment"
+            app:destination="@id/followingSearchDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/followerFragment"
         android:name="com.hsu_irlab.ecore.FollowerFragment"
@@ -100,4 +115,21 @@
             app:popUpTo="@id/homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/changeNickNameDialogFragment"
+        android:name="com.hsu_irlab.ecore.ChangeNickNameDialogFragment"
+        android:label="ChangeNickNameDialogFragment" />
+    <fragment
+        android:id="@+id/userChallengeFragment"
+        android:name="com.hsu_irlab.ecore.userChallenge.UserChallengeFragment"
+        android:label="UserChallengeFragment" >
+        <action
+            android:id="@+id/action_userChallengeFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/followingSearchDialogFragment"
+        android:name="com.hsu_irlab.ecore.FollowingSearchDialogFragment"
+        android:label="fragment_following_search_dialog"
+        tools:layout="@layout/fragment_following_search_dialog" />
 </navigation>

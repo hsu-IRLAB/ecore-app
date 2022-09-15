@@ -33,11 +33,16 @@ class FollowingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         adpater=FollowAdapter().apply { setHasStableIds(true) }
         binding.rvFollowing.adapter=adpater
         viewModel.following.observe(viewLifecycleOwner){
+            viewModel.getFollowing()
             adpater.setData(it)
             binding.tvFollowingCount.text = it.size.toString()
+        }
+        binding.btFollowingSearch.setOnClickListener{
+            findNavController().navigate(R.id.action_followingFragment_to_followingSearchDialogFragment)
         }
         binding.followingToolbar.btnBack.setOnClickListener {
             findNavController().popBackStack()

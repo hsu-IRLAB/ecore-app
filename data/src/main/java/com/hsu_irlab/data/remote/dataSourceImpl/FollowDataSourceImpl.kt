@@ -2,7 +2,9 @@ package com.hsu_irlab.data.remote.dataSourceImpl
 
 import com.hsu_irlab.data.remote.dataSource.FollowDataSource
 import com.hsu_irlab.data.remote.dto.FollowDto
+import com.hsu_irlab.data.remote.dto.FollowSearchDto
 import retrofit2.Retrofit
+import retrofit2.create
 import javax.inject.Inject
 
 class FollowDataSourceImpl @Inject constructor(
@@ -10,5 +12,13 @@ class FollowDataSourceImpl @Inject constructor(
 ): FollowDataSource {
     override suspend fun getFollow(type: String): FollowDto {
         return retrofit.create(FollowDataSource::class.java).getFollow(type)
+    }
+
+    override suspend fun getFollowSearch(name: String): FollowSearchDto {
+        return retrofit.create(FollowDataSource::class.java).getFollowSearch(name)
+    }
+
+    override suspend fun addFollow(target_id: Int) {
+        retrofit.create(FollowDataSource::class.java).addFollow(target_id)
     }
 }
