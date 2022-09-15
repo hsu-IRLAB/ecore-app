@@ -51,4 +51,13 @@ object RepositoryModule {
     ):FollowRepository{
         return FollowRepositoryImpl(api)
     }
+
+    @Provides
+    @Singleton
+    fun provideCommonRepository(
+        api: CommonDataSource
+    ):CommonRepository{
+        return CommonRepositoryImpl(api)
+    }
+
 }

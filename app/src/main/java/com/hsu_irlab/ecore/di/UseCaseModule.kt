@@ -42,4 +42,10 @@ object UseCaseModule {
         return FollowUseCase(repository)
     }
 
+    @Provides
+    @Singleton
+    fun provideCommonUseCase(repository: CommonRepository):CommonUseCase{
+        return CommonUseCase(repository)
+    }
+
 }

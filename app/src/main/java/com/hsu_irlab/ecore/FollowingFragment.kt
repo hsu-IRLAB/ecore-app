@@ -23,6 +23,7 @@ class FollowingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,20 +35,33 @@ class FollowingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adpater=FollowAdapter().apply { setHasStableIds(true) }
-        binding.rvFollowing.adapter=adpater
-        viewModel.following.observe(viewLifecycleOwner){
+        adpater = FollowAdapter { it ->
+            viewModel.getFollowSearch(it)
+            viewModel.follow.observe(viewLifecycleOwner)
+            {
+                val id = it?.first()?.user_id
+                if (id != null) {
+                    findNavController().navigate(
+                        FollowingFragmentDirections.actionFollowingFragmentToProfileFragment(
+                            id
+                        )
+                    )
+                }
+            }
+        }.apply { setHasStableIds(true) }
+        binding.rvFollowing.adapter = adpater
+        viewModel.following.observe(viewLifecycleOwner) {
             viewModel.getFollowing()
             adpater.setData(it)
             binding.tvFollowingCount.text = it.size.toString()
         }
-        binding.btFollowingSearch.setOnClickListener{
+        binding.btFollowingSearch.setOnClickListener {
             findNavController().navigate(R.id.action_followingFragment_to_followingSearchDialogFragment)
         }
         binding.followingToolbar.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.followingToolbar.tvPagename.text="팔로잉"
+        binding.followingToolbar.tvPagename.text = "팔로잉"
     }
 
 

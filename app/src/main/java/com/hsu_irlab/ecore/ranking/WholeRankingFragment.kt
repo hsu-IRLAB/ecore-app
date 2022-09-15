@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.hsu_irlab.ecore.databinding.FragmentWholeRankingBinding
 import com.hsu_irlab.ecore.presentation.adapter.RankingAdapter
 import com.hsu_irlab.ecore.presentation.viewmodel.ranking.RankingViewModel
@@ -32,7 +33,13 @@ class WholeRankingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        retrofitAdapter = RankingAdapter().apply {
+        retrofitAdapter = RankingAdapter {
+            findNavController().navigate(
+                RankingFragmentDirections.actionRankingFragmentToProfileFragment(
+                    it
+                )
+            )
+        }.apply {
             setHasStableIds(true) // 리사이클러 뷰 업데이트 시 깜빡임 방지
         }
         binding.rvWholeRanking.adapter = retrofitAdapter // 리사이클러 뷰 연결
@@ -40,6 +47,6 @@ class WholeRankingFragment : Fragment() {
             retrofitAdapter.setData(it)
         }
     }
-
-
 }
+
+

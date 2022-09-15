@@ -51,6 +51,14 @@ object DataSourceModule {
         return FollowDataSourceImpl(retrofit)
     }
 
+    @Provides
+    @Singleton
+    fun provideCommonDataSource(
+        retrofit: Retrofit
+    ):CommonDataSource{
+        return CommonDataSourceImpl(retrofit)
+    }
+
 
 
 }

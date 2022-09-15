@@ -12,7 +12,7 @@ import com.hsu_irlab.domain.model.DomainRanking
 import com.hsu_irlab.ecore.databinding.ItemRecyclerRankingBinding
 import java.text.DecimalFormat
 
-class RankingAdapter :RecyclerView.Adapter<RankingAdapter.ViewHolder>(){
+class RankingAdapter(val onClick: (Int) -> Unit) :RecyclerView.Adapter<RankingAdapter.ViewHolder>(){
 
     private var items: List<DomainRanking> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,6 +24,7 @@ class RankingAdapter :RecyclerView.Adapter<RankingAdapter.ViewHolder>(){
         holder.setItem(items[position])
         holder.itemView.setOnClickListener{ //클릭 이벤트 발생 !!
             Toast.makeText(holder.itemView.context,"${items[position].name}",Toast.LENGTH_SHORT).show()
+            onClick(items[position].user_id)
         }
     }
 

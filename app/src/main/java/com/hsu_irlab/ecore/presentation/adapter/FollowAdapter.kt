@@ -8,7 +8,7 @@ import com.hsu_irlab.domain.model.DomainFollow
 import com.hsu_irlab.data.BuildConfig
 import com.hsu_irlab.ecore.databinding.ItemRecyclerFollowBinding
 
-class FollowAdapter : RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
+class FollowAdapter(val onClick: (String) -> Unit) : RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
     private var items: List<DomainFollow> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowViewHolder {
         val binding =
@@ -18,14 +18,17 @@ class FollowAdapter : RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
 
     override fun onBindViewHolder(holder: FollowViewHolder, position: Int) {
         holder.setItem(items[position])
+        holder.itemView.setOnClickListener {
+            onClick(items[position].name)
+        }
+
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    inner class FollowViewHolder(private val binding: ItemRecyclerFollowBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class FollowViewHolder(private val binding: ItemRecyclerFollowBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setItem(follow: DomainFollow) {
             binding.tvFollowItem.text = follow.name
             Glide.with(itemView)

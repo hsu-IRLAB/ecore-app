@@ -37,16 +37,29 @@ class FollowerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adpater=FollowAdapter().apply { setHasStableIds(true) }
-        binding.rvFollower.adapter=adpater
-        viewModel.follower.observe(viewLifecycleOwner){
+        adpater = FollowAdapter { it ->
+            viewModel.getFollowSearch(it)
+            viewModel.follow.observe(viewLifecycleOwner)
+            {
+                val id = it?.first()?.user_id
+                if (id != null) {
+                    findNavController().navigate(
+                        FollowingFragmentDirections.actionFollowingFragmentToProfileFragment(
+                            id
+                        )
+                    )
+                }
+            }
+        }.apply { setHasStableIds(true) }
+        binding.rvFollower.adapter = adpater
+        viewModel.follower.observe(viewLifecycleOwner) {
             adpater.setData(it)
             binding.tvFollowerCount.text = it.size.toString()
         }
         binding.followerToolbar.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.followerToolbar.tvPagename.text="팔로워"
+        binding.followerToolbar.tvPagename.text = "팔로워"
     }
 
 }

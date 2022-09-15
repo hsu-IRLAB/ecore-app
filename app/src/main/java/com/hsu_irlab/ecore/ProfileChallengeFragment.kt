@@ -1,0 +1,28 @@
+package com.hsu_irlab.ecore
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.hsu_irlab.ecore.databinding.FragmentProfileChallengeBinding
+
+
+class ProfileChallengeFragment(user_id: Int) : Fragment() {
+    lateinit var binding: FragmentProfileChallengeBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        binding = FragmentProfileChallengeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+
+}

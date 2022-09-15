@@ -1,16 +1,17 @@
 package com.hsu_irlab.data.remote.dataSource
 
-import com.google.gson.JsonObject
-import okhttp3.MultipartBody
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
+import com.hsu_irlab.data.remote.dto.ImagesDto
+import retrofit2.http.GET
+import retrofit2.http.Query
 
-//interface CommonDataSource {
-//
-//    @Multipart
-//    @POST("/upload")
-//    suspend fun addDaily(@Part file: MultipartBody.Part,@Body query:JsonObject): Response<GroupEdit>
-//}
+interface CommonDataSource {
+    @GET("/image")
+    suspend fun getImage(
+        @Query("type")
+        type: String,
+        @Query("count")
+        count: String,
+        @Query("target")
+        target: Int
+    ):ImagesDto
+}
