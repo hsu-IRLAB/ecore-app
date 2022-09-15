@@ -8,12 +8,14 @@ data class ImagesDto(
 )
 
 data class Images(
-    val img_id:Int,
-    val title:String,
-    val img:String,
-    val date:String,
-    val good:Int,
-    val is_review:Int
+    val img_id:Int?,
+    val title:String?,
+    val img:String?,
+    val date:String?,
+    val good:Int?,
+    val is_review:Int?,
+    val campaign_image_id:Int?,
+    val campaign_img:String?
 ){
     fun toDomainImages() : DomainImages{
         return DomainImages(
@@ -22,7 +24,9 @@ data class Images(
             img=img,
             date=date,
             good=good,
-            is_review=is_review
+            is_review=is_review,
+            campaign_image_id = campaign_image_id,
+            campaign_img = campaign_img,
         )
     }
 }
