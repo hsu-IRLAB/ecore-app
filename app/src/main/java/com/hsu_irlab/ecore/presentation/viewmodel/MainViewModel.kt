@@ -1,12 +1,13 @@
 package com.hsu_irlab.ecore.presentation.viewmodel
 
+import android.graphics.Bitmap
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.auth0.android.jwt.JWT
 import com.hsu_irlab.data.Prefs
-import com.hsu_irlab.domain.model.DomainBadge
 import com.hsu_irlab.domain.model.DomainUserInfo
 import com.hsu_irlab.domain.use_case.UserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,10 +21,13 @@ class MainViewModel @Inject constructor(
 ):ViewModel(){
     private var _isLogin: MutableLiveData<Boolean> = MutableLiveData(false)
 
-
     private var _userInfo: MutableLiveData<DomainUserInfo> = MutableLiveData()
     val userInfo : MutableLiveData<DomainUserInfo>
         get() = _userInfo
+
+    private var _img: MutableLiveData<Bitmap> = MutableLiveData()
+    val img : LiveData<Bitmap>
+        get() = _img
 
     val isLogin : MutableLiveData<Boolean>
         get() = _isLogin
@@ -44,6 +48,14 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun picture(bitmap: Bitmap){
+        Log.e("dd", "picture: mainViemodel", )
+        _img.postValue(bitmap)
+    }
+
+    fun pictureClear(){
+        _img = MutableLiveData()
+    }
     fun login(){
         _isLogin.postValue(true)
     }
