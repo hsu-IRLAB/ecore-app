@@ -17,8 +17,9 @@ import com.hsu_irlab.ecore.databinding.FragmentProfileBinding
 import com.hsu_irlab.ecore.databinding.FragmentRatingBinding
 import com.hsu_irlab.ecore.presentation.viewmodel.ProfileViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.follow.FollowerViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding
     private val viewModel: ProfileViewModel by viewModels()
@@ -52,6 +53,7 @@ class ProfileFragment : Fragment() {
                 .circleCrop()
                 .into(binding.ivProfileImage)
         }
+        binding.profileViewPager.adapter = ProfilePagerAdapter(requireActivity())
         TabLayoutMediator(binding.profileTablayout, binding.profileViewPager) { tab, position ->
             when (position) {
                 0 -> tab.text = "일일도전"
@@ -59,7 +61,7 @@ class ProfileFragment : Fragment() {
                 2 -> tab.text = "캠페인"
             }
         }.attach()
-        binding.profileViewPager.adapter = ProfilePagerAdapter(requireActivity())
+
     }
 
     private inner class ProfilePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {

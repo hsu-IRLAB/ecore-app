@@ -35,4 +35,10 @@ class FollowerViewModel@Inject constructor(
             _follow.value=followUseCase.getFollowSearch(name)
         }
     }
+    fun followClear()
+    {
+        viewModelScope.launch {
+            _follow.value= null
+        }
+    }
 }

@@ -8,25 +8,25 @@ import com.hsu_irlab.data.BuildConfig
 import com.hsu_irlab.domain.model.DomainImages
 import com.hsu_irlab.ecore.databinding.ItemRecyclerProfileBinding
 
-class ProfileAdapter():RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
+class ProfileCampaignAdapter(): RecyclerView.Adapter<ProfileCampaignAdapter.ProfileCampaignViewHolder>() {
     private var items: List<DomainImages> = ArrayList()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileCampaignViewHolder {
         val binding = ItemRecyclerProfileBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ProfileViewHolder(binding)
+        return ProfileCampaignViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProfileCampaignViewHolder, position: Int) {
         holder.setImage(items[position])
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
-    inner class ProfileViewHolder(private val binding: ItemRecyclerProfileBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ProfileCampaignViewHolder(private val binding: ItemRecyclerProfileBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setImage(images: DomainImages)
         {
             Glide.with(binding.imageView2)
-                .load("${BuildConfig.BASE_URL}/upload/${images.img}")
+                .load("${BuildConfig.BASE_URL}/upload/${images.campaign_img}")
                 .into(binding.imageView2)
         }
     }
