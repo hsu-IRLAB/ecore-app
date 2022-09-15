@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.hsu_irlab.data.BuildConfig.BASE_URL
 import com.hsu_irlab.domain.model.DomainBadge
 import com.hsu_irlab.ecore.R
 import com.hsu_irlab.ecore.databinding.ItemRecyclerBadgeBinding
@@ -24,10 +25,14 @@ class BadgeAdapter : RecyclerView.Adapter<BadgeAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemRecyclerBadgeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setItem(item: DomainBadge){
-            Log.e("TAG", "setItem: $item", )
+            Log.e("TAG", "setItem: ${item.badge_img}", )
             binding.tvBadgeTitle.text = item.title
             binding.tvBadgeDetail.text = item.detail
-            Glide.with(binding.root).load(item.badge_img).into(binding.ivBadge)
+
+            //TODO 이미지 여기 주소
+            val imgUrl = BASE_URL+"/upload/"+item.badge_img
+
+            Glide.with(binding.root).load(imgUrl).into(binding.ivBadge)
             item.badge_date?.let {
                 binding.tvBadgeDate.text = item.badge_date
             }
