@@ -23,6 +23,7 @@ class BadgeViewModel @Inject constructor(
             val data = badgeUseCase.getBadge()
             _itemList.postValue(data)
         }
+        Log.e(javaClass.simpleName, "나 곧 눈물 흘림: ${itemList.value}", )
     }
 
 }

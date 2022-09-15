@@ -14,7 +14,6 @@
         android:layout_height="150dp"
         android:layout_margin="10dp"
         android:background="@drawable/bg_badge_item"
-        android:backgroundTint="#D3D3D3"
         android:padding="10dp">
 
         <TextView
@@ -30,7 +29,7 @@
             tools:text="도전의 첫 걸음" />
 
         <ImageView
-            android:id="@+id/imageView13"
+            android:id="@+id/iv_badge"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginTop="4dp"
@@ -48,11 +47,11 @@
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView13"
+            app:layout_constraintTop_toBottomOf="@+id/iv_badge"
             tools:text="처음으로 일일도전 성공했다" />
 
         <TextView
-            android:id="@+id/textView49"
+            android:id="@+id/tv_badge_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"

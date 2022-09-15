@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.hsu_irlab.domain.model.DomainBadge
 import com.hsu_irlab.ecore.R
 import com.hsu_irlab.ecore.databinding.ItemRecyclerBadgeBinding
@@ -26,11 +27,15 @@ class BadgeAdapter : RecyclerView.Adapter<BadgeAdapter.ViewHolder>() {
             Log.e("TAG", "setItem: $item", )
             binding.tvBadgeTitle.text = item.title
             binding.tvBadgeDetail.text = item.detail
+            Glide.with(binding.root).load(item.badge_img).into(binding.ivBadge)
+            item.badge_date?.let {
+                binding.tvBadgeDate.text = item.badge_date
+            }
 
             if(item.badge_date == null)
-                binding.badgeLayout.setBackgroundTint(binding.root.resources.getColor(R.color.gray_100))
+                binding.badgeLayout.setBackgroundResource(R.drawable.bg_badge_null_item)
             else
-                binding.badgeLayout.setBackgroundColor(binding.root.resources.getColor(R.color.green_100))
+                binding.badgeLayout.setBackgroundResource(R.drawable.bg_badge_item)
         }
     }
 
