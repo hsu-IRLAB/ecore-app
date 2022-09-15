@@ -14,16 +14,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChallengeViewModel @Inject constructor(
-    campaignUseCase: CampaignUseCase,
-//    challengeUseCase: ChallengeUseCase
+    private val campaignUseCase: CampaignUseCase,
+    private val challengeUseCase: ChallengeUseCase
 ): ViewModel() {
     private var _campaignList: MutableLiveData<List<DomainCampaign>> = MutableLiveData(listOf())
     val campaignList: MutableLiveData<List<DomainCampaign>>
         get() = _campaignList
 
-    private var _challengeList: MutableLiveData<List<DomainChallenge>> = MutableLiveData(listOf())
-    val challengeList: MutableLiveData<List<DomainChallenge>>
-        get() = _challengeList
+
 
     init {
         viewModelScope.launch {
@@ -31,5 +29,7 @@ class ChallengeViewModel @Inject constructor(
 //            _challengeList.postValue(challengeUseCase.getChallenge())
         }
     }
+
+
 }
 

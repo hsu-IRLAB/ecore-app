@@ -10,52 +10,42 @@ import com.bumptech.glide.Glide
 import com.hsu_irlab.data.BuildConfig
 import com.hsu_irlab.domain.model.DomainChallenge
 import com.hsu_irlab.domain.model.DomainRanking
+import com.hsu_irlab.ecore.databinding.ItemRecyclerChallengeBinding
 import com.hsu_irlab.ecore.databinding.ItemRecyclerRankingBinding
 import java.text.DecimalFormat
 
-//class ChallengeAdapter :RecyclerView.Adapter<ChallengeAdapter.ViewHolder>(){
-//
-//    private var items: List<DomainChallenge> = ArrayList()
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val binding = ItemR.inflate(LayoutInflater.from(parent.context), parent, false)
-//        return ViewHolder(binding)
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.setItem(items[position])
-//        holder.itemView.setOnClickListener{ //클릭 이벤트 발생 !!
-//            Toast.makeText(holder.itemView.context,"${items[position].name}",Toast.LENGTH_SHORT).show()
-//        }
-//    }
-//
-//    inner class ViewHolder(private val binding: ItemRecyclerRankingBinding) : RecyclerView.ViewHolder(binding.root) {
-//        val dec=DecimalFormat("#,###")
-//        @SuppressLint("SetTextI18n")
-//        fun setItem(item: DomainRanking){
-//            binding.tvRankingName.text =  item.name
-//            binding.tvRankingScore.text =  dec.format(item.total_score.toInt())
-//            binding.tvRankingGrade.text = item.row_num.toString()+"."
-//            when(binding.tvRankingGrade.text){
-//                "1." -> binding.tvRankingGrade.setTextColor(Color.parseColor("#FFBD1B"))
-//                "2." -> binding.tvRankingGrade.setTextColor(Color.parseColor("#C0C0C0"))
-//                "3." -> binding.tvRankingGrade.setTextColor(Color.parseColor("#BF8970"))
-//            }
-//            Glide.with(itemView)
-//                .load("${BuildConfig.BASE_URL}/upload/${item.profile_img}")
-//                .circleCrop()
-//                .into(binding.ivProfile)
-//        }
-//    }
-//
-//    @SuppressLint("NotifyDataSetChanged")
-//    fun setData(newItems: List<DomainRanking>) {
-//        this.items = newItems
-//        notifyDataSetChanged()
-//    }
-//
-//
-//    override fun getItemCount():Int{
-//        return items.size
-//    }
-//
-//}
+class ChallengeAdapter :RecyclerView.Adapter<ChallengeAdapter.ViewHolder>(){
+
+    private var items: List<DomainChallenge> = ArrayList()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemRecyclerChallengeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.setItem(items[position])
+    }
+
+    inner class ViewHolder(private val binding: ItemRecyclerChallengeBinding) : RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
+        fun setItem(item: DomainChallenge){
+            binding.tvChallengeTitle.text =  item.title
+            binding.tvChallengeReward.text =  item.challenge_reward.toString()
+            binding.tvChallengeCnt.text = "\uD83D\uDC64"+item.participating_person.toString()
+            binding.tvChallengeDate.text = item.term.toString()+"일"
+
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(newItems: List<DomainChallenge>) {
+        this.items = newItems
+        notifyDataSetChanged()
+    }
+
+
+    override fun getItemCount():Int{
+        return items.size
+    }
+
+}
