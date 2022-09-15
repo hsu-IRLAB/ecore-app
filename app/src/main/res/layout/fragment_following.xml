@@ -9,7 +9,7 @@
         tools:context=".FollowingFragment">
 
         <include
-            android:id="@+id/include"
+            android:id="@+id/followingToolbar"
             layout="@layout/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include">
+            app:layout_constraintTop_toBottomOf="@+id/followingToolbar">
 
             <TextView
                 android:id="@+id/textView34"

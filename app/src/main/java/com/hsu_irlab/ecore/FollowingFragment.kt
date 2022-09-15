@@ -39,10 +39,10 @@ class FollowingFragment : Fragment() {
             adpater.setData(it)
             binding.tvFollowingCount.text = it.size.toString()
         }
-//        binding.include.btToolbarBack.setOnClickListener {
-//            findNavController().popBackStack()
-//        }
-//        binding.include.textView3.text="팔로잉"
+        binding.followingToolbar.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.followingToolbar.tvPagename.text="팔로잉"
     }
 
 
