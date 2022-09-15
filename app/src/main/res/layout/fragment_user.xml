@@ -166,11 +166,12 @@
             android:id="@+id/tv_badge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
             android:text="배지"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/tv_following_value"
-            tools:layout_editor_absoluteX="28dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_following_value" />
 
         <TextView
             android:id="@+id/textView12"
@@ -209,8 +210,8 @@
             android:layout_marginTop="23dp"
             android:text="완료한 도전"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/tv_badge"
-            tools:layout_editor_absoluteX="28dp" />
+            app:layout_constraintStart_toStartOf="@+id/tv_badge"
+            app:layout_constraintTop_toBottomOf="@+id/tv_badge" />
 
         <Button
             android:id="@+id/button2"
@@ -336,7 +337,7 @@
             android:id="@+id/btn_change_nick_name"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:backgroundTint="#FFFFFF"
             android:clickable="true"
             app:borderWidth="0dp"

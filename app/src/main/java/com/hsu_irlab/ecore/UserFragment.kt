@@ -43,7 +43,7 @@ class UserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnChangeNickName.setOnClickListener{
-
+            findNavController().navigate(R.id.action_userFragment_to_changeNickNameDialogFragment)
         }
 
         binding.btnChangePhoto.setOnClickListener{
