@@ -95,6 +95,15 @@
                             <option name="y" value="396" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_followingFragment_to_followingSearchDialogFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -202,6 +211,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="userChallengeFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="316" />
+                            <option name="y" value="394" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_userChallengeFragment_to_userFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="userFragment">
                     <value>
                       <LayoutPositions>
@@ -229,6 +259,11 @@
                               </value>
                             </entry>
                             <entry key="action_userFragment_to_followingFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_userFragment_to_userChallengeFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
