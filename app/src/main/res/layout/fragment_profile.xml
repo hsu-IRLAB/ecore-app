@@ -28,10 +28,11 @@
             android:layout_width="1dp"
             android:layout_height="45dp"
 
+            android:layout_marginTop="32dp"
             android:background="@color/beige"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="289dp" />
+            app:layout_constraintTop_toBottomOf="@+id/profileview4" />
 
         <TextView
             android:id="@+id/tv_profile_name"
@@ -51,24 +52,25 @@
             android:id="@+id/tv_profile_myecore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="165dp"
+            android:layout_marginEnd="2dp"
             android:text="Ecore"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_profile_myecore_value"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/profileview3"
+            app:layout_constraintTop_toTopOf="@+id/profileview4" />
 
         <TextView
             android:id="@+id/tv_profile_myecore_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="2dp"
             android:paddingStart="2dp"
             android:paddingEnd="2dp"
             android:textColor="@color/black"
             android:textSize="27sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/tv_profile_myecore"
+            app:layout_constraintStart_toEndOf="@+id/profileview3"
             app:layout_constraintTop_toBottomOf="@+id/tv_profile_name"
             tools:text="50" />
 

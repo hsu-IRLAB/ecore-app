@@ -51,6 +51,7 @@ class FollowerFragment : Fragment() {
                 }
             }
         }.apply { setHasStableIds(true) }
+        viewModel.followClear()
         binding.rvFollower.adapter = adpater
         viewModel.follower.observe(viewLifecycleOwner) {
             adpater.setData(it)

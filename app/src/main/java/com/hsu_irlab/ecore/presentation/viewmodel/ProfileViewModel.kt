@@ -5,9 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hsu_irlab.domain.model.DomainUserInfo
 import com.hsu_irlab.domain.use_case.UserUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
+@HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val userUseCase: UserUseCase
 ):ViewModel() {

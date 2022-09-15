@@ -1,11 +1,13 @@
 package com.hsu_irlab.ecore
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hsu_irlab.ecore.R
 import com.hsu_irlab.ecore.databinding.FragmentFollowerBinding
@@ -35,11 +37,12 @@ class FollowingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adpater = FollowAdapter { it ->
-            viewModel.getFollowSearch(it)
+        adpater = FollowAdapter { it1 ->
+            viewModel.getFollowSearch(it1)
             viewModel.follow.observe(viewLifecycleOwner)
             {
                 val id = it?.first()?.user_id
+                Log.d("==", "onViewCreated:${id} ")
                 if (id != null) {
                     findNavController().navigate(
                         FollowingFragmentDirections.actionFollowingFragmentToProfileFragment(
@@ -47,14 +50,18 @@ class FollowingFragment : Fragment() {
                         )
                     )
                 }
+
             }
         }.apply { setHasStableIds(true) }
         binding.rvFollowing.adapter = adpater
+        viewModel.followClear()
+
         viewModel.following.observe(viewLifecycleOwner) {
             viewModel.getFollowing()
             adpater.setData(it)
             binding.tvFollowingCount.text = it.size.toString()
         }
+
         binding.btFollowingSearch.setOnClickListener {
             findNavController().navigate(R.id.action_followingFragment_to_followingSearchDialogFragment)
         }
