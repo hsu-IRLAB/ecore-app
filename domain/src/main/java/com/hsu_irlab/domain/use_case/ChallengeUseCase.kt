@@ -1,6 +1,7 @@
 package com.hsu_irlab.domain.use_case
 
 import com.hsu_irlab.domain.model.DomainChallenge
+import com.hsu_irlab.domain.model.DomainReview
 import com.hsu_irlab.domain.repository.ChallengeRepository
 
 class ChallengeUseCase(
@@ -8,6 +9,10 @@ class ChallengeUseCase(
 ){
     suspend fun getChallenge():List<DomainChallenge>{
         return repository.getChallenge()
+    }
+
+    suspend fun postReview(review: String): DomainReview{
+        return repository.postReview(review)
     }
 
 }
