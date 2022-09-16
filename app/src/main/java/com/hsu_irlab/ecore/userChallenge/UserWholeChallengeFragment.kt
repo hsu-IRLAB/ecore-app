@@ -1,17 +1,27 @@
 package com.hsu_irlab.ecore.userChallenge
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.hsu_irlab.ecore.R
+import com.hsu_irlab.ecore.databinding.FragmentUserWholeChallengeBinding
+import com.hsu_irlab.ecore.presentation.adapter.UserChallengeAdapter
+import com.hsu_irlab.ecore.presentation.viewmodel.userChallenge.UserCampaignViewModel
+import com.hsu_irlab.ecore.presentation.viewmodel.userChallenge.UserWholeChallengeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class UserWholeChallengeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private val model: UserWholeChallengeViewModel by activityViewModels()
+    private lateinit var adapter: UserChallengeAdapter
+    lateinit var binding: FragmentUserWholeChallengeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +32,36 @@ class UserWholeChallengeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_whole_challenge, container, false)
+        binding = FragmentUserWholeChallengeBinding.inflate(inflater, container, false)
+        setObserver()
+        setView()
+        return binding.root
+    }
+
+    private fun setView() {
+        adapter = UserChallengeAdapter { it->
+            val action =
+                it.user_challenge_id?.let { it1 ->
+                    it.title?.let { it2 ->
+                        UserChallengeFragmentDirections.actionUserChallengeFragmentToReviewDialogFragment(
+                            it1, it2
+                        )
+                    }
+                }
+            if (action != null) {
+                findNavController().navigate(action)
+            }
+        }.apply {
+            setHasStableIds(true)
+        }
+        binding.rvUserWholechallenge.adapter = adapter
+
+    }
+
+    fun setObserver() {
+        model.userChallenge.observe(viewLifecycleOwner) {
+            adapter.setData(it)
+        }
     }
 
 
