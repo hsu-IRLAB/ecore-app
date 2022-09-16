@@ -11,8 +11,8 @@ class ChallengeUseCase(
         return repository.getChallenge()
     }
 
-    suspend fun postReview(review: String): DomainReview{
-        return repository.postReview(review)
+    suspend fun postReview(uCId:Int, content: String): DomainReview{
+        return repository.postReview(uCId,content)
     }
 
 }

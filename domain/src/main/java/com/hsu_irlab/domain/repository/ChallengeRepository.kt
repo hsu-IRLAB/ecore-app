@@ -7,5 +7,5 @@ import com.hsu_irlab.domain.model.DomainReview
 interface ChallengeRepository {
     suspend fun getChallenge(): List<DomainChallenge>
 
-    suspend fun postReview(review: String): DomainReview
+    suspend fun postReview(uCId:Int,content:String): DomainReview
 }

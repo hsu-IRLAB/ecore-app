@@ -6,6 +6,7 @@ import com.hsu_irlab.data.remote.dto.ReviewDto
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.QueryMap
 
 interface ChallengeDataSource {
     @GET("/challenge")

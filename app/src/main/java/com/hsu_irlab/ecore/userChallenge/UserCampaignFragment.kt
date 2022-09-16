@@ -13,6 +13,7 @@ import com.hsu_irlab.ecore.databinding.FragmentFollowingRankingBinding
 import com.hsu_irlab.ecore.databinding.FragmentUserCampaignBinding
 import com.hsu_irlab.ecore.databinding.FragmentUserChallengeBinding
 import com.hsu_irlab.ecore.presentation.adapter.UserChallengeAdapter
+import com.hsu_irlab.ecore.presentation.adapter.UserDailyCampaignAdapter
 import com.hsu_irlab.ecore.presentation.viewmodel.userChallenge.UserCampaignViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class UserCampaignFragment : Fragment() {
 
     private val model : UserCampaignViewModel by viewModels()
-    private lateinit var adapter: UserChallengeAdapter
+    private lateinit var adapter: UserDailyCampaignAdapter
     lateinit var binding: FragmentUserCampaignBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class UserCampaignFragment : Fragment() {
     }
 
     private fun setView() {
-        adapter = UserChallengeAdapter().apply {
+        adapter = UserDailyCampaignAdapter().apply {
             setHasStableIds(true)
         }
         binding.rvUserCampaign.adapter = adapter

@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.hsu_irlab.ecore.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_dailyFragment"
             app:destination="@id/dailyFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/challengeFragment"
         android:name="com.hsu_irlab.ecore.challenge.ChallengeFragment"
         android:label="fragment_challenge"
-        tools:layout="@layout/fragment_challenge" >
+        tools:layout="@layout/fragment_challenge">
         <action
             android:id="@+id/action_challengeFragment_to_campaginDetailFragment"
             app:destination="@id/campaginDetailFragment" />
@@ -27,7 +27,7 @@
         android:id="@+id/rankingFragment"
         android:name="com.hsu_irlab.ecore.ranking.RankingFragment"
         android:label="fragment_ranking"
-        tools:layout="@layout/fragment_ranking" >
+        tools:layout="@layout/fragment_ranking">
         <action
             android:id="@+id/action_rankingFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -36,7 +36,7 @@
         android:id="@+id/userFragment"
         android:name="com.hsu_irlab.ecore.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" >
+        tools:layout="@layout/fragment_user">
         <action
             android:id="@+id/action_userFragment_to_badgeFragment"
             app:destination="@id/badgeFragment" />
@@ -58,7 +58,7 @@
         android:id="@+id/badgeFragment"
         android:name="com.hsu_irlab.ecore.BadgeFragment"
         android:label="fragment_badge"
-        tools:layout="@layout/fragment_badge" >
+        tools:layout="@layout/fragment_badge">
         <action
             android:id="@+id/action_badgeFragment_to_userFragment"
             app:destination="@id/userFragment" />
@@ -67,7 +67,7 @@
         android:id="@+id/loginFragment"
         android:name="com.hsu_irlab.ecore.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -85,7 +85,7 @@
         android:id="@+id/followingFragment"
         android:name="com.hsu_irlab.ecore.FollowingFragment"
         android:label="fragment_following"
-        tools:layout="@layout/fragment_following" >
+        tools:layout="@layout/fragment_following">
         <action
             android:id="@+id/action_followingFragment_to_followingSearchDialogFragment"
             app:destination="@id/followingSearchDialogFragment" />
@@ -97,7 +97,7 @@
         android:id="@+id/followerFragment"
         android:name="com.hsu_irlab.ecore.FollowerFragment"
         android:label="fragment_follower"
-        tools:layout="@layout/fragment_follower" >
+        tools:layout="@layout/fragment_follower">
         <action
             android:id="@+id/action_followerFragment_to_followingFragment"
             app:destination="@id/followingFragment" />
@@ -109,7 +109,7 @@
         android:id="@+id/dailyFragment"
         android:name="com.hsu_irlab.ecore.DailyFragment"
         android:label="fragment_daily"
-        tools:layout="@layout/fragment_daily" >
+        tools:layout="@layout/fragment_daily">
         <argument
             android:name="title"
             app:argType="string" />
@@ -124,14 +124,14 @@
         android:id="@+id/ratingFragment"
         android:name="com.hsu_irlab.ecore.RatingFragment"
         android:label="fragment_rating"
-        tools:layout="@layout/fragment_rating" >
+        tools:layout="@layout/fragment_rating">
         <argument
             android:name="title"
             app:argType="string" />
         <action
             android:id="@+id/action_ratingFragment_to_homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <dialog
         android:id="@+id/changeNickNameDialogFragment"
@@ -140,10 +140,13 @@
     <fragment
         android:id="@+id/userChallengeFragment"
         android:name="com.hsu_irlab.ecore.userChallenge.UserChallengeFragment"
-        android:label="UserChallengeFragment" >
+        android:label="UserChallengeFragment">
         <action
             android:id="@+id/action_userChallengeFragment_to_userFragment"
             app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_userChallengeFragment_to_reviewDialogFragment"
+            app:destination="@id/reviewDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/followingSearchDialogFragment"
@@ -154,7 +157,7 @@
         android:id="@+id/profileFragment"
         android:name="com.hsu_irlab.ecore.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <argument
             android:name="user_id"
             app:argType="integer" />
@@ -178,9 +181,20 @@
         android:id="@+id/campaginDetailFragment"
         android:name="com.hsu_irlab.ecore.CampaignDetailFragment"
         android:label="fragment_campagin_detail"
-        tools:layout="@layout/fragment_campagin_detail" >
+        tools:layout="@layout/fragment_campagin_detail">
         <argument
             android:name="data"
             app:argType="com.hsu_irlab.domain.model.DomainCampaign" />
     </fragment>
+    <dialog
+        android:id="@+id/reviewDialogFragment"
+        android:name="com.hsu_irlab.ecore.ReviewDialogFragment"
+        android:label="fragment_review_dialog"
+        tools:layout="@layout/fragment_review_dialog">
+        <argument
+            android:name="uId"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" /></dialog>
 </navigation>

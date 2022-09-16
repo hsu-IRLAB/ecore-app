@@ -53,6 +53,8 @@ object UseCaseModule {
         return CommonUseCase(repository)
     }
 
+    @Provides
+    @Singleton
     fun provideChallengeUseCase(repository: ChallengeRepository):ChallengeUseCase{
         return ChallengeUseCase(repository)
     }

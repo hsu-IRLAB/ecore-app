@@ -21,10 +21,10 @@ class UserWholeChallengeViewModel @Inject constructor(
         get() = _userChallenge
 
     init {
-        getWholeRanking()
+        getWholeChallenge()
     }
 
-    fun getWholeRanking(){
+    fun getWholeChallenge(){
         viewModelScope.launch {
             _userChallenge.value = userDailyUseCase.getChallengeProfileImg(prefs.user_id)
         }

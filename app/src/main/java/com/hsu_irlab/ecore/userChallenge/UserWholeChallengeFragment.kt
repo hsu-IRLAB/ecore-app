@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.hsu_irlab.ecore.R
 import com.hsu_irlab.ecore.databinding.FragmentUserWholeChallengeBinding
 import com.hsu_irlab.ecore.presentation.adapter.UserChallengeAdapter
@@ -17,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class UserWholeChallengeFragment : Fragment() {
 
-    private val model: UserWholeChallengeViewModel by viewModels()
+    private val model: UserWholeChallengeViewModel by activityViewModels()
     private lateinit var adapter: UserChallengeAdapter
     lateinit var binding: FragmentUserWholeChallengeBinding
 
@@ -37,7 +39,19 @@ class UserWholeChallengeFragment : Fragment() {
     }
 
     private fun setView() {
-        adapter = UserChallengeAdapter().apply {
+        adapter = UserChallengeAdapter { it->
+            val action =
+                it.user_challenge_id?.let { it1 ->
+                    it.title?.let { it2 ->
+                        UserChallengeFragmentDirections.actionUserChallengeFragmentToReviewDialogFragment(
+                            it1, it2
+                        )
+                    }
+                }
+            if (action != null) {
+                findNavController().navigate(action)
+            }
+        }.apply {
             setHasStableIds(true)
         }
         binding.rvUserWholechallenge.adapter = adapter

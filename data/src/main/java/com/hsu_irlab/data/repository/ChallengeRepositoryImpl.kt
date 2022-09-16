@@ -15,9 +15,11 @@ class ChallengeRepositoryImpl(
         return api.getChallenge().Data.map { it.toDomainChallenge() }
     }
 
-    override suspend fun postReview(review: String): DomainReview {
-        val jsonData: JsonObject = JsonObject().apply {
-            addProperty("review",review) }
+    override suspend fun postReview(uCId:Int,content:String): DomainReview {
+        val jsonData: JsonObject= JsonObject().apply{
+            addProperty("user_challenge_id",uCId)
+            addProperty("review_content",content)
+        }
         val data = api.postReview(jsonData)
         return data.toDomainReview()
     }

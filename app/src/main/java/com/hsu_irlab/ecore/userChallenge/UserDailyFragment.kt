@@ -11,13 +11,14 @@ import com.hsu_irlab.ecore.R
 import com.hsu_irlab.ecore.databinding.FragmentUserCampaignBinding
 import com.hsu_irlab.ecore.databinding.FragmentUserDailyBinding
 import com.hsu_irlab.ecore.presentation.adapter.UserChallengeAdapter
+import com.hsu_irlab.ecore.presentation.adapter.UserDailyCampaignAdapter
 import com.hsu_irlab.ecore.presentation.viewmodel.userChallenge.UserCampaignViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.userChallenge.UserDailyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class UserDailyFragment : Fragment() {
-    private lateinit var adapter: UserChallengeAdapter
+    private lateinit var adapter: UserDailyCampaignAdapter
     private val model : UserDailyViewModel by viewModels()
     lateinit var binding: FragmentUserDailyBinding
 
@@ -37,7 +38,7 @@ class UserDailyFragment : Fragment() {
         return binding.root
     }
     private fun setView() {
-        adapter = UserChallengeAdapter().apply {
+        adapter = UserDailyCampaignAdapter().apply {
             setHasStableIds(true)
         }
         binding.rvUserDaily.adapter = adapter

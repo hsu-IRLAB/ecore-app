@@ -15,7 +15,8 @@ data class Images(
     val good:Int?,
     val is_review:Int?,
     val campaign_image_id:Int?,
-    val campaign_img:String?
+    val campaign_img:String?,
+    val user_challenge_id: Int?,
 ){
     fun toDomainImages() : DomainImages{
         return DomainImages(
@@ -27,6 +28,7 @@ data class Images(
             is_review=is_review,
             campaign_image_id = campaign_image_id,
             campaign_img = campaign_img,
+            user_challenge_id = user_challenge_id
         )
     }
 }

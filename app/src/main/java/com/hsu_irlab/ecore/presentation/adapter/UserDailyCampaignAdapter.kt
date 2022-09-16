@@ -10,16 +10,16 @@ import com.hsu_irlab.data.BuildConfig.BASE_URL
 import com.hsu_irlab.domain.model.DomainImages
 import com.hsu_irlab.ecore.databinding.ItemRecyclerUserChallengeBinding
 
-class UserChallengeAdapter(
-   val onReviewClick: (DomainImages) -> Unit
-) : RecyclerView.Adapter<UserChallengeAdapter.ViewHolder>(
+class UserDailyCampaignAdapter(
+    // val onReviewClick: (Int) -> Unit
+) : RecyclerView.Adapter<UserDailyCampaignAdapter.ViewHolder>(
 ) {
     private var items: List<DomainImages> = ArrayList()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): UserChallengeAdapter.ViewHolder {
+    ): UserDailyCampaignAdapter.ViewHolder {
         val binding = ItemRecyclerUserChallengeBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -28,7 +28,7 @@ class UserChallengeAdapter(
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: UserChallengeAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserDailyCampaignAdapter.ViewHolder, position: Int) {
         holder.setItem(items[position])
     }
 
@@ -41,6 +41,9 @@ class UserChallengeAdapter(
         fun setItem(item: DomainImages) {
             with(binding) {
                 var imgUrl: String
+                item.campaign_img?.let { imgUrl = BASE_URL + "/upload/" + item.campaign_img
+                    Log.e(javaClass.simpleName, "setItem: ${imgUrl}")
+                    Glide.with(binding.root).load(imgUrl).into(ivUserChallenge) }
 
                 item.img?.let {
                     imgUrl = BASE_URL + "/upload/" + item.img
@@ -64,9 +67,6 @@ class UserChallengeAdapter(
                         0 -> btnReview.visibility = View.VISIBLE
                         1 -> btnReview.visibility = View.INVISIBLE
                     }
-                }
-                btnReview.setOnClickListener {
-                   onReviewClick(item)
                 }
             }
         }
