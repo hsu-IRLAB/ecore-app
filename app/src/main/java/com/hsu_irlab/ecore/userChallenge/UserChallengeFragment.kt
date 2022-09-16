@@ -13,10 +13,11 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.hsu_irlab.ecore.R
 import com.hsu_irlab.ecore.databinding.FragmentRatingBinding
 import com.hsu_irlab.ecore.databinding.FragmentUserChallengeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserChallengeFragment : Fragment() {
     lateinit var binding : FragmentUserChallengeBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

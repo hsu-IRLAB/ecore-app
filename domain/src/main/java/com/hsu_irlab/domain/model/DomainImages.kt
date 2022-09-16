@@ -6,7 +6,9 @@ data class DomainImages(
     val img:String?,
     val date:String?,
     val good:Int?,
+    val is_review:Int?,
     val campaign_image_id:Int?,
     val campaign_img:String?,
-    val is_review:Int?
-)
+    val user_challenge_id: Int?,
+
+    )

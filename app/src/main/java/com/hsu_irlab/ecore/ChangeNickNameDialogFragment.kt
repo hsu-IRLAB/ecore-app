@@ -38,7 +38,7 @@ class ChangeNickNameDialogFragment : DialogFragment() {
     override fun onStart() {
         super.onStart()
         if (dialog != null && activity != null && isAdded) {
-            val fullWidth = getScreenWidth(requireActivity()) * .8
+            val fullWidth = Utils.getScreenWidth(requireActivity()) * .8
             dialog?.window?.setLayout(fullWidth.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
         }
     }
@@ -111,21 +111,6 @@ class ChangeNickNameDialogFragment : DialogFragment() {
                     Toast.makeText(requireContext(),"닉네임 변경에 실패하였습니다.",1000).show()
                 }
             }
-        }
-    }
-
-    //TODO 병합하면 경호선배가 추가했을 Util에서 가져오
-    fun getScreenWidth(activity: Activity): Int {
-        val windowManager = activity.applicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
-            val windowMetrics = windowManager.currentWindowMetrics
-            val insets = windowMetrics.windowInsets
-                .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
-            windowMetrics.bounds.width() - insets.left - insets.right
-        }else{
-            val displayMetrics = DisplayMetrics()
-            windowManager.defaultDisplay.getMetrics(displayMetrics)
-            displayMetrics.widthPixels
         }
     }
 
