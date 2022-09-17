@@ -29,7 +29,7 @@ class CantViewModel @Inject constructor(
     private fun cant(){
         viewModelScope.launch {
             val data = challengeUseCase.getChallenge()
-            val res = data.filter { it.is_participate==null}
+            val res = data.filter { it.user_challenge_id==null}
             _challengeList.postValue(res)
         }
     }

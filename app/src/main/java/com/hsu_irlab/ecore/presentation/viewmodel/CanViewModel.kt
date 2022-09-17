@@ -29,7 +29,7 @@ class CanViewModel @Inject constructor(
     private fun can(){
         viewModelScope.launch {
             val data = challengeUseCase.getChallenge()
-            val res = data.filter { it.is_participate!=null}
+            val res = data.filter { it.user_challenge_id!=null}
             Log.e("TAG", "can: $res", )
             _challengeList.postValue(res)
         }

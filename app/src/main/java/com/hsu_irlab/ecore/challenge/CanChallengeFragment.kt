@@ -30,10 +30,6 @@ class CanChallengeFragment : Fragment() {
     private lateinit var adapter: ChallengeAdapter
     private val model : CanViewModel by viewModels()
 
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
