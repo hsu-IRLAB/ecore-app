@@ -22,5 +22,4 @@ class CommonUseCase(
     {
         return repository.getProfileImg(type,"all",target)
     }
-
 }
