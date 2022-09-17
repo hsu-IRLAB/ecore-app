@@ -21,10 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     private lateinit var navController: NavController
     private val mainModel : MainViewModel by viewModels()
-
     val REQUEST_IMAGE_CAPTURE = 1
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +64,6 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            Log.e("dddd", "onActivityResult: dddddd", )
             mainModel.picture(imageBitmap)
 //            main_img_photo.setImageBitmap(imageBitmap)
         }

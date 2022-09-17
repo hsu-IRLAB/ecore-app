@@ -24,13 +24,15 @@ class CommonRepositoryImpl(
     }
 
     override suspend fun postImage(type: String, target: Int, image: File): DomainImagePostResult {
-        val jsonData: JsonObject = JsonObject().apply{
-            addProperty("type",type)
-            addProperty("target",target)
-        }
+
         val requestFile = image.asRequestBody("image/png".toMediaTypeOrNull())
-        val body = MultipartBody.Part.createFormData("userfile", image?.name,requestFile)
-        val data = api.postImg(jsonData,body)
+        val imgData = MultipartBody.Part.createFormData("img", image?.name,requestFile)
+
+        val typeData = MultipartBody.Part.createFormData("type", type)
+        val targetData = MultipartBody.Part.createFormData("target", target.toString())
+
+
+        val data = api.postImg(typeData,targetData,imgData)
         return data.toDomainImagePostResult()
     }
 }

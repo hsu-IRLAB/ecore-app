@@ -82,7 +82,7 @@ class DailyFragment : Fragment() {
             }
     }
 
-    fun checkPermission(){
+    private fun checkPermission(){
         val permissionChecker: PermissionListener = object : PermissionListener {
             override fun onPermissionGranted() {
                 cameraShot()

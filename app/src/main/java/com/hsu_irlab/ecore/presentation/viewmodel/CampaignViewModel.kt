@@ -1,5 +1,6 @@
 package com.hsu_irlab.ecore.presentation.viewmodel
 
+import android.graphics.Bitmap
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,11 +11,12 @@ import com.hsu_irlab.domain.model.DomainImages
 import com.hsu_irlab.domain.use_case.CommonUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
 class CampaignViewModel @Inject constructor(
-    commonUseCase: CommonUseCase,
+    private val commonUseCase: CommonUseCase,
     prefs: Prefs
 ): ViewModel() {
     private var _campaignImg: MutableLiveData<List<DomainImages>> = MutableLiveData()
@@ -28,4 +30,9 @@ class CampaignViewModel @Inject constructor(
         }
     }
 
+    fun postImg(file: File,id:Int){
+        viewModelScope.launch{
+            commonUseCase.postImg("campaign",id,file)
+        }
+    }
 }

@@ -15,8 +15,12 @@ class CommonDataSourceImpl @Inject constructor(private val retrofit: Retrofit): 
         return retrofit.create(CommonDataSource::class.java).getImage(type, count, target)
     }
 
-    override fun postImg(query: JsonObject, file: MultipartBody.Part): Call<ImagePostResultDto> {
-        return retrofit.create(CommonDataSource::class.java).postImg(query,file)
+    override suspend fun postImg(
+        type: MultipartBody.Part,
+        target: MultipartBody.Part,
+        img: MultipartBody.Part
+    ): ImagePostResultDto {
+        return retrofit.create(CommonDataSource::class.java).postImg(type,target,img)
     }
 
 }

@@ -20,8 +20,9 @@ interface CommonDataSource {
 
     @Multipart
     @POST("/upload")
-    fun postImg(
-        @Body query: JsonObject,
-        @Part file: MultipartBody.Part
+    suspend fun postImg(
+        @Part type: MultipartBody.Part,
+        @Part target: MultipartBody.Part,
+        @Part img: MultipartBody.Part
     ): ImagePostResultDto
 }

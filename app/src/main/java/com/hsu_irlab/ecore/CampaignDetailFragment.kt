@@ -1,6 +1,7 @@
 package com.hsu_irlab.ecore
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
@@ -9,22 +10,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.normal.TedPermission
 import com.hsu_irlab.data.BuildConfig
 import com.hsu_irlab.ecore.databinding.ActivityMainBinding
 import com.hsu_irlab.ecore.databinding.FragmentCampaginDetailBinding
 import com.hsu_irlab.ecore.databinding.FragmentChallengeBinding
 import com.hsu_irlab.ecore.presentation.viewmodel.BadgeViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.CampaignViewModel
+import com.hsu_irlab.ecore.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+import java.io.FileOutputStream
+import kotlin.math.log
 
 @AndroidEntryPoint
 class CampaignDetailFragment : Fragment() {
     lateinit var binding: FragmentCampaginDetailBinding
     private val model: CampaignViewModel by viewModels()
+    private val mainModel : MainViewModel by activityViewModels()
+
     val REQUEST_IMAGE_CAPTURE = 1
 
 //    lateinit var mainBinding : ActivityMainBinding
@@ -32,6 +44,7 @@ class CampaignDetailFragment : Fragment() {
     private val args: CampaignDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        mainModel.pictureClear()
 //        mainBinding = ActivityMainBinding.inflate(layoutInflater)
 //        mainBinding.activityMainNavi.visibility = View.GONE
 
@@ -51,6 +64,9 @@ class CampaignDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setToolBar()
+        binding.btnCampaginStart.setOnClickListener {
+            checkPermission()
+        }
 
     }
     private fun setToolBar(){
@@ -70,9 +86,44 @@ class CampaignDetailFragment : Fragment() {
             .into(binding.ivCdMain)
     }
     private fun setObserver() {
-        model.campaignImg.observe(viewLifecycleOwner) { it ->
-            val data =it.filter { it.title== args.data.title}
+        mainModel.img.observe(viewLifecycleOwner){
+            val fileName = System.currentTimeMillis().toString() + ".png"
+            val cachePath = File(requireActivity().cacheDir, "images")
+            cachePath.mkdirs()
+            val stream = FileOutputStream("$cachePath/$fileName")
+            it.compress(Bitmap.CompressFormat.PNG, 100, stream)
+            stream.close()
+            val newFile = File(cachePath, fileName)
+            model.postImg(newFile,args.data.campaign_id)
+            findNavController().popBackStack()
+            Toast.makeText(requireContext(),"켐페인 도전 완료",1000).show()
         }
     }
+
+    private fun cameraShot(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+                takePictureIntent.resolveActivity(requireActivity().packageManager)?.also {
+                    requireActivity().startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                }
+            }
+    }
+
+    private fun checkPermission(){
+        val permissionChecker: PermissionListener = object : PermissionListener {
+            override fun onPermissionGranted() {
+                cameraShot()
+            }
+            override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                Toast.makeText(context, "카메라 권한을 설정해 주세요", Toast.LENGTH_SHORT).show()
+            }
+        }
+        TedPermission.create()
+            .setPermissionListener(permissionChecker)
+            .setDeniedMessage("권한 설정 해주세요")
+            .setPermissions(android.Manifest.permission.CAMERA)
+            .check()
+    }
+
 
 }
