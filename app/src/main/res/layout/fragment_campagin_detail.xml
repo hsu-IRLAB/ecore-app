@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:text="TextView"
+                    android:text="2022.09.07 ~ 2022.09.18"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_campagin_detail_ecore_val"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tv_campagin_detail_ecore_val" />

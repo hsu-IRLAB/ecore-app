@@ -23,7 +23,6 @@ class RankingAdapter(val onClick: (Int) -> Unit) :RecyclerView.Adapter<RankingAd
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setItem(items[position])
         holder.itemView.setOnClickListener{ //클릭 이벤트 발생 !!
-            Toast.makeText(holder.itemView.context,"${items[position].name}",Toast.LENGTH_SHORT).show()
             onClick(items[position].user_id)
         }
     }

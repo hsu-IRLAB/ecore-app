@@ -49,6 +49,12 @@ class ChallengeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.challengeToolbar.tvPagename.text = "도전"
+
+        binding.challengeToolbar.btnBack.visibility=View.GONE
+//        binding.challengeToolbar.btnBack.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
     }
     private fun setView() {
         campaignAdapter = CampaignAdapter().apply {

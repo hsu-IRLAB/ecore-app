@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -68,6 +69,9 @@ class RankingFragment : Fragment() {
             binding.tvRankingScore.text = it.total_score.toString()
 
         }
+
+        binding.rankingToolbar.btnBack.visibility=View.GONE
+        binding.rankingToolbar.tvPagename.text = "랭킹"
     }
 
     private inner class RankingPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {

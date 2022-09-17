@@ -46,8 +46,6 @@ class MainViewModel @Inject constructor(
         if (user_id != null) {
             prefs.user_id = user_id
         }
-        Log.e("TAG", "해당 유저 아이디 $user_id", )
-
         getUserInfo(prefs.user_id)
         if (prefs.jwt!="NO_TOKEN"){
             _isLogin.postValue(true)

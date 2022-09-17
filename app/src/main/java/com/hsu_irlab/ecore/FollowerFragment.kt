@@ -43,11 +43,8 @@ class FollowerFragment : Fragment() {
             {
                 val id = it?.first()?.user_id
                 if (id != null) {
-                    findNavController().navigate(
-                        FollowingFragmentDirections.actionFollowingFragmentToProfileFragment(
-                            id
-                        )
-                    )
+                    val action = FollowerFragmentDirections.actionFollowerFragmentToProfileFragment(id)
+                    findNavController().navigate(action)
                 }
             }
         }.apply { setHasStableIds(true) }

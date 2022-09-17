@@ -67,6 +67,10 @@ class DailyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.dailyToolbar.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.dailyToolbar.tvPagename.text = "일일 도전"
 
         binding.btnDailyStart.setOnClickListener {
             checkPermission()
@@ -115,11 +119,9 @@ class DailyFragment : Fragment() {
             binding.tvDailyDetail.text = it.detail
             Glide.with(this)
                 .load("${BuildConfig.BASE_URL}/upload/${it.good_ex}")
-                .circleCrop()
                 .into(binding.ivDailyGood)
             Glide.with(this)
                 .load("${BuildConfig.BASE_URL}/upload/${it.bad_ex}")
-                .circleCrop()
                 .into(binding.ivDailyBad)
         }
         mainModel.img.observe(viewLifecycleOwner){

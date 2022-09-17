@@ -190,79 +190,21 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_ecore_value"
         app:layout_constraintStart_toStartOf="@+id/tv_ecore_value" />
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:background="@color/green_200"
-                android:gravity="center"
-                android:text="#임시" />
-
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:background="@color/beige"
-                android:gravity="center"
-                android:text="#임시" />
-
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:background="@color/green_200"
-                android:gravity="center"
-                android:text="#임시" />
-
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:background="@color/beige"
-                android:gravity="center"
-                android:text="#임시" />
-
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:background="@color/beige"
-                android:gravity="center"
-                android:text="#임시" />
-        </LinearLayout>
-    </HorizontalScrollView>
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="나의 도전"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+        app:layout_constraintTop_toBottomOf="@+id/rv_daily_done" />
 
     <ImageButton
         android:id="@+id/btn_to_daily"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="8dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -293,6 +235,14 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/view5"
         app:layout_constraintTop_toBottomOf="@+id/activity_daily_tv" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_daily_done"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

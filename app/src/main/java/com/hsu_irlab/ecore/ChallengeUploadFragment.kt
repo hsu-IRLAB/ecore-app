@@ -34,6 +34,7 @@ class ChallengeUploadFragment : Fragment() {
     lateinit var binding : FragmentChallengeUploadBinding
     private val args: ChallengeUploadFragmentArgs by navArgs()
     private val model : ChallengeUploadViewModel by viewModels()
+    private val mainModel : MainViewModel by activityViewModels()
     private lateinit var adapter: MyChallengeAdapter
     val REQUEST_IMAGE_CAPTURE = 1
 
@@ -68,12 +69,15 @@ class ChallengeUploadFragment : Fragment() {
                 findNavController().popBackStack()
             }
             idChupToolbar.tvPagename.text = "도전"
-            tvChupTerm.text = args.day.toString()+"일차0"
+            tvChupTerm.text = args.day.toString()+"일차"
             tvChupTitle.text = args.titiel
             btnChupStart.setOnClickListener {
                 checkPermission()
                 val action = ChallengeUploadFragmentDirections.actionChallengeUploadFragmentToRatingFragment(args.titiel,challengeModel.user_challenge_id,"challenge")
-                findNavController().navigate(action)
+
+                mainModel.img.observe(viewLifecycleOwner){
+                    findNavController().navigate(action)
+                }
             }
         }
     }
@@ -84,7 +88,7 @@ class ChallengeUploadFragment : Fragment() {
                 .into(binding.ivChupGood)
             Glide.with(this)
                 .load("${BuildConfig.BASE_URL}/upload/${it.bad_example}")
-                .into(binding.ivChupGood)
+                .into(binding.ivChupBad)
             val current =it.my_challenge.size.toString()
             val cnt = current+"/"+it.achievement_condition.toString()
             binding.tvChupCnt.text = cnt
@@ -121,6 +125,7 @@ class ChallengeUploadFragment : Fragment() {
     }
 
     override fun onResume() {
+        Log.e("ddddddddd", "onResume: dddd", )
         model.getChallengeUploadDetail(challengeModel.user_challenge_id)
         super.onResume()
 

@@ -75,6 +75,7 @@ class CampaignDetailFragment : Fragment() {
         binding.tvCampaginDetailTitle.text = args.data.title
         binding.tvCampaginDetailEcoreVal.text = args.data.campaign_reward.toString()
         binding.tvCdDetail.text = args.data.detail
+
         Glide.with(this)
             .load("${BuildConfig.BASE_URL}/upload/${args.data.poster_img}")
             .into(binding.ivCdMain)

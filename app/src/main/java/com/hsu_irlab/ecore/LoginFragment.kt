@@ -21,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -28,10 +29,8 @@ class LoginFragment : Fragment() {
     private val mainModel: MainViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -43,12 +42,13 @@ class LoginFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mainModel.isLogin.observe(viewLifecycleOwner) {
-            if (it){
-                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-//                setupWithNavController(R.id.activity_main_navi,findNavController())
-            }
-        }
+
+//        mainModel.isLogin.observe(viewLifecycleOwner) {
+//            if (it){
+//                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+////                setupWithNavController(R.id.activity_main_navi,findNavController())
+//            }
+//        }
 //        mainModel.isLogin.observe(viewLifecycleOwner) {
 //            if (it){
 //                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)

@@ -42,10 +42,9 @@ class FollowingFragment : Fragment() {
             viewModel.follow.observe(viewLifecycleOwner)
             {
                 val id = it?.first()?.user_id
-                Log.d("==", "onViewCreated:${id} ")
                 if (id != null) {
                     findNavController().navigate(
-                        FollowingFragmentDirections.actionFollowingFragmentToProfileFragment(
+                        FollowerFragmentDirections.actionFollowerFragmentToProfileFragment(
                             id
                         )
                     )

@@ -194,8 +194,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/view17"
-                app:layout_constraintStart_toStartOf="@+id/view17"
+                app:layout_constraintBottom_toTopOf="@+id/rv_my_challenge"
+                app:layout_constraintEnd_toEndOf="@+id/rv_my_challenge"
                 tools:text="3 / 7" />
 
             <androidx.recyclerview.widget.RecyclerView

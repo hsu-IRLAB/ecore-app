@@ -11,10 +11,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.hsu_irlab.data.BuildConfig
 import com.hsu_irlab.ecore.databinding.FragmentBadgeBinding
 import com.hsu_irlab.ecore.databinding.FragmentHomeBinding
+import com.hsu_irlab.ecore.presentation.adapter.ProfileAdapter
 import com.hsu_irlab.ecore.presentation.viewmodel.BadgeViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.HomeViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.MainViewModel
@@ -28,6 +31,8 @@ class HomeFragment : Fragment() {
     lateinit var binding : FragmentHomeBinding
     private val model: HomeViewModel by viewModels()
     private val mainModel : MainViewModel by activityViewModels()
+    private lateinit var adpater: ProfileAdapter
+
 
 //    private val viewModel by lazy { ViewModelProvider(this,
 //        HomeViewModel.Factory(99))[HomeViewModel::class.java] }
@@ -54,6 +59,13 @@ class HomeFragment : Fragment() {
 
             findNavController().navigate(action)
 
+        }
+        adpater=ProfileAdapter().apply { setHasStableIds(true) }
+        binding.rvDailyDone.adapter=adpater
+        binding.rvDailyDone.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        model.img.observe(viewLifecycleOwner){
+            adpater.setData(it)
         }
 
     }
@@ -97,8 +109,8 @@ class HomeFragment : Fragment() {
     }
 
     override fun onResume() {
-        super.onResume()
         model.getDaily()
+        super.onResume()
     }
 
 }
