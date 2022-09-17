@@ -1,7 +1,9 @@
 package com.hsu_irlab.domain.use_case
 
+import com.hsu_irlab.domain.model.DomainImagePostResult
 import com.hsu_irlab.domain.model.DomainImages
 import com.hsu_irlab.domain.repository.CommonRepository
+import java.io.File
 
 class CommonUseCase(
     private val repository: CommonRepository
@@ -42,6 +44,8 @@ class CommonUseCase(
         repository.addReport(type, img_id)
     }
 
-
+    suspend fun postImg(type:String,target:Int,img: File):DomainImagePostResult{
+        return repository.postImage(type,target,img)
+    }
 
 }

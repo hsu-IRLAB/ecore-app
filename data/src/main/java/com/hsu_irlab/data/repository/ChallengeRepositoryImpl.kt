@@ -3,10 +3,7 @@ package com.hsu_irlab.data.repository
 import com.google.gson.JsonObject
 import com.hsu_irlab.data.remote.dataSource.ChallengeDataSource
 import com.hsu_irlab.data.remote.dto.toDomainUserChangeName
-import com.hsu_irlab.domain.model.DomainChallenge
-import com.hsu_irlab.domain.model.DomainChallengeDetail
-import com.hsu_irlab.domain.model.DomainReview
-import com.hsu_irlab.domain.model.DomainUserChangeName
+import com.hsu_irlab.domain.model.*
 import com.hsu_irlab.domain.repository.ChallengeRepository
 
 class ChallengeRepositoryImpl(
@@ -23,6 +20,18 @@ class ChallengeRepositoryImpl(
         }
         val data = api.postReview(jsonData)
         return data.toDomainReview()
+    }
+
+    override suspend fun postChallenge(CId: Int): DomainChallengeStart {
+        val jsonData: JsonObject= JsonObject().apply{
+            addProperty("challenge_id",CId)
+        }
+        return api.postChallenge(jsonData).toDomainChallengeStart()
+    }
+
+    override suspend fun getChallengeUploadDetail(id: Int): List<DomainChallengeUpload> {
+
+        return api.getChallengeUploadDetail(id).Data.map { it.toDomainChallengeUpload() }
     }
 
     override suspend fun getChallengeDetail(id:Int): List<DomainChallengeDetail> {

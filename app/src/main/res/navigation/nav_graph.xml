@@ -213,6 +213,20 @@
         <argument
             android:name="data"
             app:argType="com.hsu_irlab.domain.model.DomainChallenge" />
+        <action
+            android:id="@+id/action_challengeDetailFragment_to_challengeUploadFragment"
+            app:destination="@id/challengeUploadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/challengeUploadFragment"
+        android:name="com.hsu_irlab.ecore.ChallengeUploadFragment"
+        android:label="ChallengeUploadFragment" >
+        <argument
+            android:name="day"
+            app:argType="integer" />
+        <argument
+            android:name="titiel"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/otherImgFragment"

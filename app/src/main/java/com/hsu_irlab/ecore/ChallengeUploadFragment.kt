@@ -1,59 +1,88 @@
 package com.hsu_irlab.ecore
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.hsu_irlab.data.BuildConfig
+import com.hsu_irlab.ecore.databinding.FragmentChallengeDetailBinding
+import com.hsu_irlab.ecore.databinding.FragmentChallengeUploadBinding
+import com.hsu_irlab.ecore.presentation.adapter.MyChallengeAdapter
+import com.hsu_irlab.ecore.presentation.adapter.ReviewAdapter
+import com.hsu_irlab.ecore.presentation.viewmodel.ChallengeUploadViewModel
+import com.hsu_irlab.ecore.presentation.viewmodel.ChallengeViewModel
+import com.hsu_irlab.ecore.presentation.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ChallengeUploadFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class ChallengeUploadFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var binding : FragmentChallengeUploadBinding
+    private val args: ChallengeUploadFragmentArgs by navArgs()
+    private val model : ChallengeUploadViewModel by viewModels()
+    private lateinit var adapter: MyChallengeAdapter
+
+
+    private val challengeModel : ChallengeViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_challenge_upload, container, false)
+        binding = FragmentChallengeUploadBinding.inflate(inflater,container,false)
+        val id = challengeModel.user_challenge_id
+        model.getChallengeUploadDetail(id)
+
+        adapter =  MyChallengeAdapter().apply {
+            setHasStableIds(true) // 리사이클러 뷰 업데이트 시 깜빡임 방지
+        }
+        binding.rvMyChallenge.adapter = adapter
+        binding.rvMyChallenge.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChallengeUploadFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ChallengeUploadFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setObserver()
+        with(binding){
+            idChupToolbar.btnBack.setOnClickListener {
+                findNavController().popBackStack()
             }
+            idChupToolbar.tvPagename.text = "도전"
+            binding.tvChupTerm.text = args.day.toString()+"일차"
+            binding.tvChupTitle.text = args.titiel
+
+        }
+    }
+    private fun setObserver() {
+        model.challengeDetail.observe(viewLifecycleOwner) { it ->
+            Glide.with(this)
+                .load("${BuildConfig.BASE_URL}/upload/${it.good_example}")
+                .into(binding.ivChupGood)
+            Glide.with(this)
+                .load("${BuildConfig.BASE_URL}/upload/${it.bad_example}")
+                .into(binding.ivChupGood)
+            val current =it.my_challenge.size.toString()
+            val cnt = current+"/"+it.achievement_condition.toString()
+            binding.tvChupCnt.text = cnt
+            adapter.setData(it.my_challenge)
+
+        }
+
+
+
     }
 }

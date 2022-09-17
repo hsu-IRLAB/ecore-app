@@ -29,6 +29,8 @@ class CanChallengeFragment : Fragment() {
 //    private lateinit var retrofitAdapter: ChallengeA
     private lateinit var adapter: ChallengeAdapter
     private val model : CanViewModel by viewModels()
+    private val challengeModel : ChallengeViewModel by activityViewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +51,15 @@ class CanChallengeFragment : Fragment() {
             setHasStableIds(true)
         }
         binding.rvCan.adapter = adapter // 리사이클러 뷰 연결
+        adapter.onClick = {
+//            val data = DomainChallenge(1,"dd",1,1,1,-1,"f")
+            if(it.user_challenge_id!=null){
+                challengeModel.user_challenge_id= it.user_challenge_id!!
+            }
+            val action = ChallengeFragmentDirections.actionChallengeFragmentToChallengeDetailFragment(it)
+//            val action = ChallengeFragmentDirections.actionChallengeFragmentToChallengeDetailFragment(data)
+            findNavController().navigate(action)
+        }
 
         model.challengeList.observe(viewLifecycleOwner) {
             adapter.setData(it)

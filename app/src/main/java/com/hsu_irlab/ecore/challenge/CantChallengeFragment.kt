@@ -23,6 +23,8 @@ class CantChallengeFragment : Fragment() {
     lateinit var binding : FragmentCantChallengeBinding
     private lateinit var adapter: ChallengeAdapter
     private val model : CantViewModel by viewModels()
+    private val challengeModel : ChallengeViewModel by activityViewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,10 @@ class CantChallengeFragment : Fragment() {
         }
         binding.rvCant.adapter = adapter // 리사이클러 뷰 연결
         adapter.onClick = {
+            if(it.user_challenge_id!=null){
+                challengeModel.user_challenge_id= it.user_challenge_id!!
+            }
+
 //            val data = DomainChallenge(1,"dd",1,1,1,-1,"f")
             val action = ChallengeFragmentDirections.actionChallengeFragmentToChallengeDetailFragment(it)
 //            val action = ChallengeFragmentDirections.actionChallengeFragmentToChallengeDetailFragment(data)
