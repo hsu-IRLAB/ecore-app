@@ -101,8 +101,6 @@ class DailyFragment : Fragment() {
 
     }
 
-
-
     /*private fun checkPermission() {
         val permission = mutableMapOf<String, String>()
         permission["camera"] = Manifest.permission.CAMERA
@@ -125,10 +123,10 @@ class DailyFragment : Fragment() {
                 .into(binding.ivDailyBad)
         }
         mainModel.img.observe(viewLifecycleOwner){
-//            val action = DailyFragmentDirections.actionDailyFragmentToRatingFragment(
-//                args.title)
-//            findNavController().navigate(action)
-//            binding.ivDailyGood.setImageBitmap(it)
+            val action = DailyFragmentDirections.actionDailyFragmentToRatingFragment(
+                args.title,-1,"daily")
+            findNavController().navigate(action)
+            binding.ivDailyGood.setImageBitmap(it)
         }
     }
 }

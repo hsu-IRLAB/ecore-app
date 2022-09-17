@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    dailyUseCase: DailyUseCase
+    private val dailyUseCase: DailyUseCase
 ): ViewModel() {
     private var _dailyInfo: MutableLiveData<DomainDaily> = MutableLiveData()
     val dailyInfo : MutableLiveData<DomainDaily>
@@ -20,12 +20,17 @@ class HomeViewModel @Inject constructor(
 
     var dailyData :DomainDaily = DomainDaily("",-1, DomainDailyInfo("",-1,""))
 
+
     init {
+        getDaily()
+    }
+    fun getDaily(){
         viewModelScope.launch{
             val data = dailyUseCase.getDaily()
             dailyData =data
             _dailyInfo.postValue(data)
         }
+
     }
 
 }

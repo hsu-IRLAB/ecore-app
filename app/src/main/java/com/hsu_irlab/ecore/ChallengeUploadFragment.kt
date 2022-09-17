@@ -37,8 +37,6 @@ class ChallengeUploadFragment : Fragment() {
     private lateinit var adapter: MyChallengeAdapter
     val REQUEST_IMAGE_CAPTURE = 1
 
-
-
     private val challengeModel : ChallengeViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +68,7 @@ class ChallengeUploadFragment : Fragment() {
                 findNavController().popBackStack()
             }
             idChupToolbar.tvPagename.text = "도전"
-            tvChupTerm.text = args.day.toString()+"일차"
+            tvChupTerm.text = args.day.toString()+"일차0"
             tvChupTitle.text = args.titiel
             btnChupStart.setOnClickListener {
                 checkPermission()
@@ -122,4 +120,9 @@ class ChallengeUploadFragment : Fragment() {
             .check()
     }
 
+    override fun onResume() {
+        model.getChallengeUploadDetail(challengeModel.user_challenge_id)
+        super.onResume()
+
+    }
 }

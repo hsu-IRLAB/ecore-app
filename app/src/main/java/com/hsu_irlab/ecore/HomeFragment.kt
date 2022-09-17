@@ -1,15 +1,18 @@
-package com.hsu_irlab.ecore
+package com.hsu_irlab. ecore
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.hsu_irlab.data.BuildConfig
 import com.hsu_irlab.ecore.databinding.FragmentBadgeBinding
 import com.hsu_irlab.ecore.databinding.FragmentHomeBinding
 import com.hsu_irlab.ecore.presentation.viewmodel.BadgeViewModel
@@ -74,7 +77,28 @@ class HomeFragment : Fragment() {
             binding.tvDailyHome.text = it.title
             binding.tvEcoreValue.text = it.daily_reward.toString()
             binding.tvHomeLike.text = "0"
+            if((it.info?.daily_good ?: -1) != -1){
+                Glide.with(this)
+                    .load("${BuildConfig.BASE_URL}/upload/${it.info?.daily_img}")
+                    .into(binding.btnToDaily)
+                    .apply {
+                        binding.btnToDaily.visibility=View.VISIBLE
+                    }
+                binding.btnToDaily.setOnClickListener {
+                    Toast.makeText(requireContext(),"일일도전 완료",1000).show()
+                }
+            }else{
+                binding.btnToDaily.background = resources.getDrawable(R.drawable.pc_upload,null)
+                binding.btnToDaily.visibility=View.VISIBLE
+
+            }
+
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        model.getDaily()
     }
 
 }

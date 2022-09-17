@@ -27,7 +27,6 @@ class RatingFragment : Fragment() {
     private val mainModel : MainViewModel by activityViewModels()
     private val args: RatingFragmentArgs by navArgs()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -57,6 +56,9 @@ class RatingFragment : Fragment() {
             mainModel.postImg(args.type,file,args.target)
         }
         findNavController().popBackStack()
+        if (args.type=="daily"){
+            findNavController().popBackStack()
+        }
         Toast.makeText(requireContext(),"사진 업로드 완료",1000).show()
 //        Toast.makeText(requireContext(),"일일도전 참여가 완료 되었습니다.",1000).show()
 //        findNavController().navigate(R.id.action_ratingFragment_to_homeFragment)

@@ -264,6 +264,7 @@
         android:layout_width="220dp"
         android:layout_height="220dp"
         android:layout_marginTop="8dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -293,16 +294,5 @@
         app:layout_constraintStart_toStartOf="@+id/view5"
         app:layout_constraintTop_toBottomOf="@+id/activity_daily_tv" />
 
-    <TextView
-        android:id="@+id/tv_follow_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="도전하기"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_to_daily"
-        app:layout_constraintEnd_toEndOf="@+id/btn_to_daily"
-        app:layout_constraintStart_toStartOf="@+id/btn_to_daily"
-        app:layout_constraintTop_toTopOf="@+id/btn_to_daily" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
