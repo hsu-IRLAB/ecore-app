@@ -1,8 +1,6 @@
 package com.hsu_irlab.domain.use_case
 
-import com.hsu_irlab.domain.model.DomainChallenge
-import com.hsu_irlab.domain.model.DomainChallengeDetail
-import com.hsu_irlab.domain.model.DomainReview
+import com.hsu_irlab.domain.model.*
 import com.hsu_irlab.domain.repository.ChallengeRepository
 
 class ChallengeUseCase(
@@ -18,6 +16,14 @@ class ChallengeUseCase(
 
     suspend fun getChallengeDetail(id:Int):List<DomainChallengeDetail>{
         return repository.getChallengeDetail(id)
+    }
+
+    suspend fun postChallenge(CId:Int): DomainChallengeStart{
+        return repository.postChallenge(CId)
+    }
+
+    suspend fun getChallengeUploadDetail(id:Int): List<DomainChallengeUpload>{
+        return repository.getChallengeUploadDetail(id)
     }
 
 }

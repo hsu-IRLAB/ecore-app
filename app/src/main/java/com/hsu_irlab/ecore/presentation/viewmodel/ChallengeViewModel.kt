@@ -15,14 +15,11 @@ import javax.inject.Inject
 @HiltViewModel
 class ChallengeViewModel @Inject constructor(
     private val campaignUseCase: CampaignUseCase,
-    private val challengeUseCase: ChallengeUseCase
 ): ViewModel() {
     private var _campaignList: MutableLiveData<List<DomainCampaign>> = MutableLiveData(listOf())
+    var user_challenge_id=-1
     val campaignList: MutableLiveData<List<DomainCampaign>>
         get() = _campaignList
-
-
-
     init {
         viewModelScope.launch {
             _campaignList.postValue(campaignUseCase.getCampaign())
