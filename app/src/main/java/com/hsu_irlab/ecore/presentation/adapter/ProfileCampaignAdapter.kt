@@ -8,7 +8,7 @@ import com.hsu_irlab.data.BuildConfig
 import com.hsu_irlab.domain.model.DomainImages
 import com.hsu_irlab.ecore.databinding.ItemRecyclerProfileBinding
 
-class ProfileCampaignAdapter(): RecyclerView.Adapter<ProfileCampaignAdapter.ProfileCampaignViewHolder>() {
+class ProfileCampaignAdapter(val onClick: (Int) -> Unit): RecyclerView.Adapter<ProfileCampaignAdapter.ProfileCampaignViewHolder>() {
     private var items: List<DomainImages> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileCampaignViewHolder {
         val binding = ItemRecyclerProfileBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -17,6 +17,9 @@ class ProfileCampaignAdapter(): RecyclerView.Adapter<ProfileCampaignAdapter.Prof
 
     override fun onBindViewHolder(holder: ProfileCampaignViewHolder, position: Int) {
         holder.setImage(items[position])
+        holder.itemView.setOnClickListener {
+            items[position].campaign_image_id?.let { it1 -> onClick(it1) }
+        }
     }
 
     override fun getItemCount(): Int {

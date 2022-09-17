@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hsu_irlab.ecore.databinding.FragmentProfileChallengeBinding
 import com.hsu_irlab.ecore.presentation.adapter.ProfileAdapter
@@ -35,7 +36,9 @@ class ProfileChallengeFragment(user_id: Int) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDailyImages("challenge", user_id = user_id)
-        adpater=ProfileAdapter().apply { setHasStableIds(true) }
+        adpater=ProfileAdapter{
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToOtherImgFragment("challenge",it,user_id))
+        }.apply { setHasStableIds(true) }
         binding.rvProfileChallenge.adapter=adpater
         binding.rvProfileChallenge.layoutManager= GridLayoutManager(context,3)
         viewModel.images.observe(viewLifecycleOwner){

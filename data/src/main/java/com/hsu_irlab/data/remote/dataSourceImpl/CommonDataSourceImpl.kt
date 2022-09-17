@@ -11,4 +11,16 @@ class CommonDataSourceImpl @Inject constructor(private val retrofit: Retrofit): 
         return retrofit.create(CommonDataSource::class.java).getImage(type, count, target)
     }
 
+    override suspend fun addLike(type: String, img_id: Int) {
+        retrofit.create(CommonDataSource::class.java).addLike(type,img_id)
+    }
+
+    override suspend fun delLike(type: String, img_id: Int) {
+        retrofit.create(CommonDataSource::class.java).delLike(type,img_id)
+    }
+
+    override suspend fun addReport(type: String, img_id: Int) {
+        retrofit.create(CommonDataSource::class.java).addReport(type, img_id)
+    }
+
 }
