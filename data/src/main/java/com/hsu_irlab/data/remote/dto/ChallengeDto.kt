@@ -23,7 +23,8 @@ data class Challenge(
             term=term,
             challenge_reward=challenge_reward,
             participating_person=participating_person,
-            is_participate=is_participate,
+            user_challenge_id = this.is_participate?.user_challenge_id,
+            start_date = this.is_participate?.start_date
         )
     }
 }

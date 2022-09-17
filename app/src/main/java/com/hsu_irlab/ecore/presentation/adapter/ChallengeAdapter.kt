@@ -15,6 +15,7 @@ import com.hsu_irlab.ecore.databinding.ItemRecyclerRankingBinding
 import java.text.DecimalFormat
 
 class ChallengeAdapter :RecyclerView.Adapter<ChallengeAdapter.ViewHolder>(){
+    lateinit var onClick : (DomainChallenge)-> Unit
 
     private var items: List<DomainChallenge> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,6 +24,9 @@ class ChallengeAdapter :RecyclerView.Adapter<ChallengeAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.itemView.setOnClickListener{
+            onClick(items[position])
+        }
         holder.setItem(items[position])
     }
 
