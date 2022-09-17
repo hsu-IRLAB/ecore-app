@@ -1,8 +1,11 @@
 package com.hsu_irlab.data.remote.dataSource
 
+import com.google.gson.JsonObject
+import com.hsu_irlab.data.remote.dto.ImagePostResultDto
 import com.hsu_irlab.data.remote.dto.ImagesDto
-import retrofit2.http.GET
-import retrofit2.http.Query
+import okhttp3.MultipartBody
+import retrofit2.Call
+import retrofit2.http.*
 
 interface CommonDataSource {
     @GET("/image")
@@ -14,4 +17,11 @@ interface CommonDataSource {
         @Query("target")
         target: Int
     ):ImagesDto
+
+    @Multipart
+    @POST("/upload")
+    fun postImg(
+        @Body query: JsonObject,
+        @Part file: MultipartBody.Part
+    ): ImagePostResultDto
 }

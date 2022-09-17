@@ -9,15 +9,21 @@ import androidx.lifecycle.viewModelScope
 import com.auth0.android.jwt.JWT
 import com.hsu_irlab.data.Prefs
 import com.hsu_irlab.domain.model.DomainUserInfo
+import com.hsu_irlab.domain.use_case.CommonUseCase
 import com.hsu_irlab.domain.use_case.UserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     prefs: Prefs,
-    private val userUseCase: UserUseCase
+    private val userUseCase: UserUseCase,
+    private val commonUseCase: CommonUseCase
 ):ViewModel(){
     private var _isLogin: MutableLiveData<Boolean> = MutableLiveData(false)
 
@@ -65,6 +71,45 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             _userInfo.postValue(userUseCase.getUserInfo(user_id))
         }
+    }
+
+/*
+    fun postImg(type: String, target: Int){
+        img.value?.let { BitmapConvertFile(it,"/test") }
+        viewModelScope.launch {
+            val data=commonUseCase.postImg(type,target,)
+        }
+    }
+*/
+
+
+
+    private fun BitmapConvertFile(bitmap: Bitmap,filePath: String):File{
+        val directory = File("/image")
+        if (!directory.exists()) {       // 원하는 경로에 폴더가 있는지 확인
+            directory.mkdirs();    // 하위폴더를 포함한 폴더를 전부 생성
+        }
+
+        val file: File = File(filePath)
+
+        var out : OutputStream? = null
+
+        try {
+            file.createNewFile()
+            out = FileOutputStream(file)
+            bitmap.compress(Bitmap.CompressFormat.PNG,100,out)
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+        finally {
+            try {
+                out?.close()
+            }
+            catch (e: IOException){
+                e.printStackTrace()
+            }
+        }
+        return file
     }
     
 }

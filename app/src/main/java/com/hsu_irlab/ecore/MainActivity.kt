@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
-    override fun onRequestPermissionsResult(
+    /*override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
-    }
+    }*/
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
