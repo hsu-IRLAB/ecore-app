@@ -24,7 +24,7 @@
             app:layout_constraintTop_toBottomOf="@+id/id_chup_toolbar">
 
             <Button
-                android:id="@+id/btn_chup"
+                android:id="@+id/btn_chup_start"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_bottom"

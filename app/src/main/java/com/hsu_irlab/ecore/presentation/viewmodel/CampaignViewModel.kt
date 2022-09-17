@@ -30,6 +30,7 @@ class CampaignViewModel @Inject constructor(
         }
     }
 
+
     fun postImg(file: File,id:Int){
         viewModelScope.launch{
             commonUseCase.postImg("campaign",id,file)

@@ -135,6 +135,11 @@
             android:id="@+id/action_ratingFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment" />
+        <argument
+            android:name="target"
+            app:argType="integer" />
+        <argument android:name="type"
+            app:argType="string" />
     </fragment>
     <dialog
         android:id="@+id/changeNickNameDialogFragment"
@@ -221,5 +226,8 @@
         <argument
             android:name="titiel"
             app:argType="string" />
+        <action
+            android:id="@+id/action_challengeUploadFragment_to_ratingFragment"
+            app:destination="@id/ratingFragment" />
     </fragment>
 </navigation>

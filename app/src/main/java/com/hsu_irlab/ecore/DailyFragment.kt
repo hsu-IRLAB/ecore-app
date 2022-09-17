@@ -125,9 +125,9 @@ class DailyFragment : Fragment() {
                 .into(binding.ivDailyBad)
         }
         mainModel.img.observe(viewLifecycleOwner){
-            val action = DailyFragmentDirections.actionDailyFragmentToRatingFragment(
-                args.title)
-            findNavController().navigate(action)
+//            val action = DailyFragmentDirections.actionDailyFragmentToRatingFragment(
+//                args.title)
+//            findNavController().navigate(action)
 //            binding.ivDailyGood.setImageBitmap(it)
         }
     }

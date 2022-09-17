@@ -5,13 +5,11 @@ import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -20,16 +18,12 @@ import com.bumptech.glide.Glide
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
 import com.hsu_irlab.data.BuildConfig
-import com.hsu_irlab.ecore.databinding.ActivityMainBinding
 import com.hsu_irlab.ecore.databinding.FragmentCampaginDetailBinding
-import com.hsu_irlab.ecore.databinding.FragmentChallengeBinding
-import com.hsu_irlab.ecore.presentation.viewmodel.BadgeViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.CampaignViewModel
 import com.hsu_irlab.ecore.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream
-import kotlin.math.log
 
 @AndroidEntryPoint
 class CampaignDetailFragment : Fragment() {
@@ -87,18 +81,23 @@ class CampaignDetailFragment : Fragment() {
     }
     private fun setObserver() {
         mainModel.img.observe(viewLifecycleOwner){
-            val fileName = System.currentTimeMillis().toString() + ".png"
-            val cachePath = File(requireActivity().cacheDir, "images")
-            cachePath.mkdirs()
-            val stream = FileOutputStream("$cachePath/$fileName")
-            it.compress(Bitmap.CompressFormat.PNG, 100, stream)
-            stream.close()
-            val newFile = File(cachePath, fileName)
-            model.postImg(newFile,args.data.campaign_id)
+            val file = getUploadFile(it)
+            model.postImg(file, args.data.campaign_id)
             findNavController().popBackStack()
-            Toast.makeText(requireContext(),"켐페인 도전 완료",1000).show()
+            Toast.makeText(requireContext(),"사진 업로드 완료",1000).show()
+
         }
     }
+    private fun getUploadFile(bitmap: Bitmap): File {
+        val fileName = System.currentTimeMillis().toString() + ".png"
+        val cachePath = File(requireActivity().cacheDir, "images")
+        cachePath.mkdirs()
+        val stream = FileOutputStream("$cachePath/$fileName")
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        stream.close()
+        return File(cachePath, fileName)
+    }
+
 
     private fun cameraShot(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -124,6 +123,4 @@ class CampaignDetailFragment : Fragment() {
             .setPermissions(android.Manifest.permission.CAMERA)
             .check()
     }
-
-
 }

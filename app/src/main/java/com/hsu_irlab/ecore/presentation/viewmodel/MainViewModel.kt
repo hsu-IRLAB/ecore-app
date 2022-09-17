@@ -70,6 +70,14 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun postImg(type:String,file: File,target:Int){
+        viewModelScope.launch{
+            commonUseCase.postImg(type,target,file)
+        }
+    }
+
+
+
 /*
     fun postImg(type: String, target: Int){
         img.value?.let { BitmapConvertFile(it,"/test") }
@@ -78,35 +86,31 @@ class MainViewModel @Inject constructor(
         }
     }
 */
-
-
-
-    private fun BitmapConvertFile(bitmap: Bitmap,filePath: String):File{
-        val directory = File("/image")
-        if (!directory.exists()) {       // 원하는 경로에 폴더가 있는지 확인
-            directory.mkdirs();    // 하위폴더를 포함한 폴더를 전부 생성
-        }
-
-        val file: File = File(filePath)
-
-        var out : OutputStream? = null
-
-        try {
-            file.createNewFile()
-            out = FileOutputStream(file)
-            bitmap.compress(Bitmap.CompressFormat.PNG,100,out)
-        }catch (e:Exception){
-            e.printStackTrace()
-        }
-        finally {
-            try {
-                out?.close()
-            }
-            catch (e: IOException){
-                e.printStackTrace()
-            }
-        }
-        return file
-    }
-    
+//    private fun BitmapConvertFile(bitmap: Bitmap,filePath: String):File{
+//        val directory = File("/image")
+//        if (!directory.exists()) {       // 원하는 경로에 폴더가 있는지 확인
+//            directory.mkdirs();    // 하위폴더를 포함한 폴더를 전부 생성
+//        }
+//
+//        val file: File = File(filePath)
+//
+//        var out : OutputStream? = null
+//
+//        try {
+//            file.createNewFile()
+//            out = FileOutputStream(file)
+//            bitmap.compress(Bitmap.CompressFormat.PNG,100,out)
+//        }catch (e:Exception){
+//            e.printStackTrace()
+//        }
+//        finally {
+//            try {
+//                out?.close()
+//            }
+//            catch (e: IOException){
+//                e.printStackTrace()
+//            }
+//        }
+//        return file
+//    }
 }

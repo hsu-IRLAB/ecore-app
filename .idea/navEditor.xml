@@ -50,6 +50,15 @@
                             <option name="y" value="-939" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_challengeDetailFragment_to_challengeUploadFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -321,8 +330,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-597" />
-                            <option name="y" value="-131" />
+                            <option name="x" value="-472" />
+                            <option name="y" value="-916" />
                           </Point>
                         </option>
                         <option name="myPositions">

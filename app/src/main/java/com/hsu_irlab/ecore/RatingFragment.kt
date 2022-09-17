@@ -52,30 +52,43 @@ class RatingFragment : Fragment() {
     }
 
     private fun uploadFin(){
-        Toast.makeText(requireContext(),"일일도전 참여가 완료 되었습니다.",1000).show()
-        findNavController().navigate(R.id.action_ratingFragment_to_homeFragment)
+        val file = mainModel.img.value?.let { getUploadFile(it) }
+        if (file != null) {
+            mainModel.postImg(args.type,file,args.target)
+        }
+        findNavController().popBackStack()
+        Toast.makeText(requireContext(),"사진 업로드 완료",1000).show()
+//        Toast.makeText(requireContext(),"일일도전 참여가 완료 되었습니다.",1000).show()
+//        findNavController().navigate(R.id.action_ratingFragment_to_homeFragment)
+    }
+    private fun getUploadFile(bitmap: Bitmap): File {
+        val fileName = System.currentTimeMillis().toString() + ".png"
+        val cachePath = File(requireActivity().cacheDir, "images")
+        cachePath.mkdirs()
+        val stream = FileOutputStream("$cachePath/$fileName")
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        stream.close()
+        return File(cachePath, fileName)
     }
 
-    private fun BitmapConvertFile(bitmap: Bitmap,filePath: String){
-        val file: File = File(filePath)
-
-        var out : OutputStream? = null
-
-        try {
-            file.createNewFile()
-            out = FileOutputStream(file)
-            bitmap.compress(Bitmap.CompressFormat.PNG,100,out)
-        }catch (e:Exception){
-            e.printStackTrace()
-        }
-        finally {
-            try {
-                out?.close()
-            }
-            catch (e:IOException){
-                e.printStackTrace()
-            }
-        }
-    }
+//    private fun BitmapConvertFile(bitmap: Bitmap,filePath: String){
+//        val file: File = File(filePath)
+//        var out : OutputStream? = null
+//        try {
+//            file.createNewFile()
+//            out = FileOutputStream(file)
+//            bitmap.compress(Bitmap.CompressFormat.PNG,100,out)
+//        }catch (e:Exception){
+//            e.printStackTrace()
+//        }
+//        finally {
+//            try {
+//                out?.close()
+//            }
+//            catch (e:IOException){
+//                e.printStackTrace()
+//            }
+//        }
+//    }
 
 }
