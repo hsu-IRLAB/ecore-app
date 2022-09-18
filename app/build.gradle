@@ -5,6 +5,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.gms.google-services'
+    id 'com.google.android.gms.oss-licenses-plugin'
 
 }
 
@@ -110,6 +111,10 @@ dependencies {
 
     //jwt
     implementation 'com.auth0.android:jwtdecode:2.0.1'
+
+    //oss
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
+
 
 
 }

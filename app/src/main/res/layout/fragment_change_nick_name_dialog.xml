@@ -31,7 +31,7 @@
 
         <EditText
             android:id="@+id/et_username"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -39,6 +39,7 @@
             android:backgroundTint="@color/beige"
             android:ems="10"
             android:inputType="textPersonName"
+            android:maxLength="10"
             android:paddingLeft="10dp"
             app:layout_constraintEnd_toStartOf="@+id/btn_namecheck"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +57,7 @@
 
         <TextView
             android:id="@+id/tv_massage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="사용 가능한 닉네임입니다."

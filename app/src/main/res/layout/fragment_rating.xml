@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="다른 사옹자가 업로드한 사진을 확인해 주세요\n도전에 적합하지 않은 사진이면 부적합 버튼을 통해서\n알려주세요!"
+                android:text="다른 사용자가 업로드한 사진을 확인해 주세요\n도전에 적합하지 않은 사진이면 부적합 버튼을 통해서\n알려주세요!"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_report_title" />

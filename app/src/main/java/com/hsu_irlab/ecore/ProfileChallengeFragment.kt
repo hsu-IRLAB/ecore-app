@@ -36,9 +36,10 @@ class ProfileChallengeFragment(user_id: Int) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDailyImages("challenge", user_id = user_id)
-        adpater=ProfileAdapter{
+        adpater=ProfileAdapter().apply { setHasStableIds(true) }
+        adpater.onClick={
             findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToOtherImgFragment("challenge",it,user_id))
-        }.apply { setHasStableIds(true) }
+        }
         binding.rvProfileChallenge.adapter=adpater
         binding.rvProfileChallenge.layoutManager= GridLayoutManager(context,3)
         viewModel.images.observe(viewLifecycleOwner){

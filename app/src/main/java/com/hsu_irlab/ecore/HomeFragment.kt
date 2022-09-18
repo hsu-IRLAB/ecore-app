@@ -61,6 +61,9 @@ class HomeFragment : Fragment() {
 
         }
         adpater=ProfileAdapter().apply { setHasStableIds(true) }
+        adpater.onClick={
+
+        }
         binding.rvDailyDone.adapter=adpater
         binding.rvDailyDone.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 

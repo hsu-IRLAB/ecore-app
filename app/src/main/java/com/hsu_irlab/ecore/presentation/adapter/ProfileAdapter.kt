@@ -5,10 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hsu_irlab.data.BuildConfig
+import com.hsu_irlab.domain.model.DomainCampaign
 import com.hsu_irlab.domain.model.DomainImages
 import com.hsu_irlab.ecore.databinding.ItemRecyclerProfileBinding
 
-class ProfileAdapter(val onClick: (Int) -> Unit):RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
+class ProfileAdapter():RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
+    lateinit var onClick : (Int)->Unit
+
     private var items: List<DomainImages> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val binding = ItemRecyclerProfileBinding.inflate(LayoutInflater.from(parent.context), parent, false)

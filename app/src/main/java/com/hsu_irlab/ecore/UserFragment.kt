@@ -1,5 +1,6 @@
 package com.hsu_irlab.ecore
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import com.hsu_irlab.ecore.databinding.FragmentUserBinding
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.hsu_irlab.data.BuildConfig.BASE_URL
 import com.hsu_irlab.ecore.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,6 +55,12 @@ class UserFragment : Fragment() {
 
         binding.btnChangePhoto.setOnClickListener{
 
+        }
+        binding.ivOss.setOnClickListener{
+            Intent(requireActivity().applicationContext, OssLicensesMenuActivity::class.java).also { it2->
+                OssLicensesMenuActivity.setActivityTitle("오픈소스 라이선스")
+                startActivity(it2)
+            }
         }
     }
 

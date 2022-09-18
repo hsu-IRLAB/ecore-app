@@ -35,9 +35,16 @@ class ProfileDailyFragment(user_id: Int) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDailyImages("daily", user_id = user_id)
-        adpater=ProfileAdapter{
-            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToOtherImgFragment("daily",it,user_id))
-        }.apply { setHasStableIds(true) }
+        adpater = ProfileAdapter().apply { setHasStableIds(true) }
+        adpater.onClick= {
+            findNavController().navigate(
+                ProfileFragmentDirections.actionProfileFragmentToOtherImgFragment(
+                    "daily",
+                    it,
+                    user_id
+                )
+            )
+        }
         binding.rvProfileDaily.adapter=adpater
         binding.rvProfileDaily.layoutManager= GridLayoutManager(context,3)
         viewModel.images.observe(viewLifecycleOwner){

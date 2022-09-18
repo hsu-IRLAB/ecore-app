@@ -20,8 +20,8 @@ class CommonDataSourceImpl @Inject constructor(private val retrofit: Retrofit) :
         target: MultipartBody.Part,
         img: MultipartBody.Part
     ): ImagePostResultDto {
-        return retrofit.create(CommonDataSource::class.java).postImg(type,target,img)
-
+        return retrofit.create(CommonDataSource::class.java).postImg(type, target, img)
+    }
     override suspend fun addLike(type: String, img_id: Int) {
         retrofit.create(CommonDataSource::class.java).addLike(type, img_id)
     }
@@ -34,12 +34,12 @@ class CommonDataSourceImpl @Inject constructor(private val retrofit: Retrofit) :
         retrofit.create(CommonDataSource::class.java).addReport(type, img_id)
     }
 
-    override fun postImg(
-        query: JsonObject,
-        file: MultipartBody.Part
-    ): ImagePostResultDto {
-        return retrofit.create(CommonDataSource::class.java).postImg(query, file)
-
-    }
+//    override fun postImg(
+//        query: JsonObject,
+//        file: MultipartBody.Part
+//    ): ImagePostResultDto {
+//        return retrofit.create(CommonDataSource::class.java).postImg(query, file)
+//
+//    }
 
 }
