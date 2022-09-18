@@ -35,6 +35,16 @@ class MainActivity : AppCompatActivity() {
                 setupWithNavController(binding.activityMainNavi,navController)
             }
         }
+        navController.addOnDestinationChangedListener{_,destination, _ ->
+            if (destination.id==R.id.otherImgFragment || destination.id==R.id.otherImgCampaignFragment)
+            {
+                binding.activityMainNavi.visibility= View.GONE
+            }
+            else
+            {
+                binding.activityMainNavi.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun onBackPressed() {

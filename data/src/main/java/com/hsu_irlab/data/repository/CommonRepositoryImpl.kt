@@ -23,6 +23,19 @@ class CommonRepositoryImpl(
         return api.getImage(type, count, target).Data.map { it.toDomainImages() }
     }
 
+
+    override suspend fun addLike(type: String, img_id: Int) {
+        api.addLike(type,img_id)
+    }
+
+    override suspend fun delLike(type: String, img_id: Int) {
+        api.delLike(type,img_id)
+    }
+
+    override suspend fun addReport(type: String, img_id: Int) {
+        api.addReport(type, img_id)
+    }
+
     override suspend fun postImage(type: String, target: Int, image: File): DomainImagePostResult {
 
         val requestFile = image.asRequestBody("image/png".toMediaTypeOrNull())
@@ -34,5 +47,6 @@ class CommonRepositoryImpl(
 
         val data = api.postImg(typeData,targetData,imgData)
         return data.toDomainImagePostResult()
+
     }
 }

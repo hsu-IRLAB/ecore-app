@@ -169,6 +169,12 @@
         <argument
             android:name="user_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_profileFragment_to_otherImgFragment"
+            app:destination="@id/otherImgFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_otherImgCampaignFragment"
+            app:destination="@id/otherImgCampaignFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileDailyFragment"
@@ -229,5 +235,32 @@
         <action
             android:id="@+id/action_challengeUploadFragment_to_ratingFragment"
             app:destination="@id/ratingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otherImgFragment"
+        android:name="com.hsu_irlab.ecore.OtherImgFragment"
+        android:label="fragment_other_img"
+        tools:layout="@layout/fragment_other_img" >
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="img_id"
+            app:argType="integer" />
+        <argument
+            android:name="user_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/otherImgCampaignFragment"
+        android:name="com.hsu_irlab.ecore.OtherImgCampaignFragment"
+        android:label="fragment_other_img_campaign"
+        tools:layout="@layout/fragment_other_img_campaign" >
+        <argument
+            android:name="img_id"
+            app:argType="integer" />
+        <argument
+            android:name="user_id"
+            app:argType="integer" />
     </fragment>
 </navigation>

@@ -62,6 +62,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="challengeDetailFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="8" />
+                            <option name="y" value="211" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="challengeFragment">
                     <value>
                       <LayoutPositions>
@@ -265,13 +277,37 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="otherImgCampaignFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="862" />
+                            <option name="y" value="1194" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="otherImgFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="686" />
+                            <option name="y" value="1196" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="profileCampaignFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="387" />
-                            <option name="y" value="1139" />
+                            <option name="x" value="323" />
+                            <option name="y" value="1131" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -282,7 +318,7 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-103" />
+                            <option name="x" value="119" />
                             <option name="y" value="1127" />
                           </Point>
                         </option>
@@ -294,8 +330,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-448" />
-                            <option name="y" value="847" />
+                            <option name="x" value="-70" />
+                            <option name="y" value="1126" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -309,6 +345,20 @@
                             <option name="x" value="181" />
                             <option name="y" value="756" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_profileFragment_to_otherImgCampaignFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_profileFragment_to_otherImgFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hsu_irlab.ecore.databinding.FragmentProfileCampaignBinding
 import com.hsu_irlab.ecore.presentation.adapter.FollowAdapter
@@ -38,7 +39,8 @@ class ProfileCampaignFragment(user_id: Int) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDailyImages("campaign", user_id = user_id)
-        adpater=ProfileCampaignAdapter().apply { setHasStableIds(true) }
+        adpater=ProfileCampaignAdapter {
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToOtherImgCampaignFragment(imgId = it, userId =user_id))}.apply { setHasStableIds(true) }
         binding.rvProfileCampaign.adapter=adpater
         binding.rvProfileCampaign.layoutManager=GridLayoutManager(context,3)
         viewModel.images.observe(viewLifecycleOwner){
